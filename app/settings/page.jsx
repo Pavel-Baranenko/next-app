@@ -13,6 +13,47 @@ export default function Settings() {
   const [surname, setSurname] = useState();
   const [patronymic, setPatronymic] = useState();
 
+  const [images, setImages] = useState({
+    // title: "",
+    // descr: "",
+    size: 0,
+    photos: []
+  });
+
+  const { title, descr, photos } = images
+  const handleImg = (e) => {
+    setImages({
+      ...images,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleFileChange = e => {
+    const files = e.target.files;
+    const photosArr = [];
+    for (const file of files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.addEventListener('load', () => {
+        const fileobj = {
+          name: file.name,
+          type: file.type,
+          size: file.size,
+          src: reader.result
+        };
+
+        console.log(fileobj.size);
+        photosArr.push(fileobj);
+        setImages({
+          ...images,
+          // size:
+          photos: [...photos, ...photosArr]
+        })
+      })
+    }
+  }
+
+  const handleDeleteImg = (e) => { }
 
   const changePhone = () => {
     setPhone(event.target.value)
@@ -34,7 +75,7 @@ export default function Settings() {
   return (
     <main>
       <div className="container">
-        <form className="form settings" >
+        <div className="form settings" >
           <div className="settings-top">
             <a href="javascript:history.back()" className="back-link"></a>
             <h4>Настройте ваш профиль риелтора</h4>
@@ -49,27 +90,45 @@ export default function Settings() {
             </div>
             <div className="form__body">
               <div className="file-input"></div>
-              {/* <div className="form__body-grid">
-                <div className="input__inner">
-                  <label htmlFor="">Имя <span className='red'>*</span></label>
-                  <input type="text" onChange={handleName} />
-                </div>
-                <div className="input__inner tel-input">
-                  <label htmlFor="">Номер телефона <span className='red'>*</span></label>
-                  <PhoneInput
-                    defaultCountry="RU"
-                    value={phone}
-                    onChange={changePhone} />
-                </div>
-                <div className="input__inner">
-                  <label htmlFor="">Эл. почта <span className='red'>*</span></label>
-                  <input type="mail" />
-                </div>
-                <div className="input__inner ">
-                  <label htmlFor="">Придумайте пароль <span className='red'>*</span></label>
-                  <input type="password" />
-                </div>
-              </div> */}
+              <div className="file-upload">
+                <form className="" enctype="multipart /form-data">
+
+                  <div className="custom-form-group">
+                    {photos.length == 0 && <div className="custom-file-drop-area ">
+                      <input type="file" name="photos" placeholder="Enter photos" multiple="true" id="filephotos" onChange={handleFileChange} />
+                      <label for="filephotos">
+                        <img src="../img/photos.svg" alt="" />
+                        <p>
+                          Перетащите изображение сюда или
+                          <span className='blue'>загрузите с устройства</span>
+                        </p>
+                      </label>
+                    </div>
+                    }
+                    <div className="custom-file-preview">
+                      {photos.length > 0 && photos.map((item, index) => (
+                        <div className="prev-img" key={index} data-imgindex={index}>
+                          <span onClick={handleDeleteImg}>&times;</span>
+                          <img src={item.src} alt={item.name} />
+                        </div>
+                      ))}
+                      {photos.length > 0 && <div className="mini-drop-area custom-file-drop-area">
+                        <input type="file" name="photos" placeholder="Enter photos" multiple="true" id="filephotos" onChange={handleFileChange} />
+                        <label for="filephotos">
+                          <img src="../img/photos.svg" alt="" />
+                        </label>
+                      </div>
+
+                      }
+
+                    </div>
+
+                  </div>
+                  {/* <button type="submit" className="btn-submit">Submit</button> */}
+                </form>
+              </div>
+
+
             </div>
 
           </div>
@@ -189,7 +248,7 @@ export default function Settings() {
           <button className=" reset-btn blue-btn submit-btn">Далее</button>
 
           <p className="bottom__text">Нажимая на кнопку «Далее», вы соглашаетесь с обработкой <Link href="">персональных данных</Link> и <Link href="">политикой конфиденциальности</Link></p>
-        </form>
+        </div>
 
 
       </div >
