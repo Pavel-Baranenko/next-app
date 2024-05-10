@@ -5,22 +5,24 @@ import 'react-phone-number-input/style.css'
 import Link from 'next/link';
 
 export default function Login() {
-  const [value, setValue] = useState();
-  const [phone, setPhone] = useState();
+  const [mail, setName] = useState();
+  const [pass, setPass] = useState();
+  const [newpass, setNewPass] = useState();
+  const auth = mail && pass && newpass
 
-  const chengeValue = () => {
-    setValue(event.target.value);
-  }
-  const changePhone = () => {
-    setPhone(event.target.value)
-  }
   const handleName = () => {
-    // console.log(.target.value);
+    setName(event.target.value.trim())
+  }
+  const changePass = () => {
+    setPass(event.target.value.trim())
+  }
+  const changeNewPass = () => {
+    setNewPass(event.target.value.trim())
   }
 
   return (
     <main>
-      <div className="container">
+      <div className={`container ${auth ? "isGoing" : "notValid"}`}>
         <form className="form">
           <div className="form__inner">
             <div className="form__heading">
@@ -33,17 +35,28 @@ export default function Login() {
 
 
               <div className="form__container">
-                <div className="input__inner">
+                <div className={`input__inner ${mail ? "float-input" : ""}`}>
                   <label htmlFor="">Эл. почта <span className='red'>*</span></label>
-                  <input type="mail" onChange={handleName} />
+                  <input
+                    type="mail"
+                    onChange={handleName}
+                    value={mail} />
                 </div>
-                <div className="input__inner">
+                <div className={`input__inner ${pass ? "float-input" : ""}`}>
                   <label htmlFor="">Новый пароль <span className='red'>*</span></label>
-                  <input type="password" onChange={handleName} />
+                  <input
+                    type="password"
+                    onChange={changePass}
+                    value={pass}
+                  />
                 </div>
-                <div className="input__inner">
+                <div className={`input__inner ${newpass ? "float-input" : ""}`}>
                   <label htmlFor="">Повторите пароль <span className='red'>*</span></label>
-                  <input type="password" onChange={handleName} />
+                  <input
+                    type="password"
+                    onChange={changeNewPass}
+                    autoComplete='new-password'
+                    value={newpass} />
                 </div>
               </div>
             </div>
