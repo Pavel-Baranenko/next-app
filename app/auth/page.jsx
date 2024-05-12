@@ -4,27 +4,28 @@ import React, { useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import ReactInputVerificationCode from 'react-input-verification-code';
 // import 'react-input-verification-code/dist/index.css';
+// import axios from 'axios';
 import 'react-phone-number-input/style.css'
+import { registration } from '@/actions/user';
+
 
 export default function Auth() {
-  const [value, setValue] = useState();
-  const [name, setName] = useState();
-  const [phone, setPhone] = useState();
+  const [role, setValue] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
   const [validphone, setValidphone] = useState();
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setMail] = useState("");
+  const [pass, setPassword] = useState("");
   const [form, setForm] = useState(false);
 
   const [types, setTypes] = useState(false)
 
   const chengeValue = () => {
     setValue(event.target.value);
+    // console.log(role);
   }
   const changePhone = () => {
     setPhone(event.target.value)
-    // if (phone[0] == "+" && phone[1] == "7") {
-    //   phone[1] == "8"
-    // }
   }
   const changeName = () => {
     setName(event.target.value.trim());
@@ -38,7 +39,7 @@ export default function Auth() {
   const submitForm = () => {
     console.log("Отправлено")
   }
-  const verify = value && name && phone && mail && password
+  const verify = role && name && phone && email && pass
   const handleShow = () => {
     if (types === true) {
       setTypes(false)
@@ -47,6 +48,28 @@ export default function Auth() {
       setTypes(true)
     }
   }
+
+  // const sendUser = () => {
+  //   const requestBody = {
+  //     name: name,
+  //     email: mail,
+  //     pass: password,
+  //     phone: phone,
+  //     role: role
+  //   };
+  //   const headers = {
+  //     'Authorization': 'Bearer my-token',
+  //     'My-Custom-Header': 'foobar'
+  //   };
+  //   const response = axios.post('https://d.sve.fvds.ru:445/api/v1/users/create', requestBody);
+  //   console.log(response);
+  //   // const data = response.json();
+  //   // this.setState({ postId: data.id });
+  //   // console.log(data);
+
+  // }
+
+
 
   return (
     <main>
@@ -63,7 +86,7 @@ export default function Auth() {
               <div className="form__radio-buttons">
                 <div className="input__box">
                   <input type="radio" name="radio-client" value="client"
-                    checked={value == 'client' ? true : false}
+                    checked={role == 'client' ? true : false}
                     onChange={chengeValue} />
                   <label htmlFor='radio-client'>Я клиент</label>
 
@@ -71,7 +94,7 @@ export default function Auth() {
 
                 <div className="input__box">
                   <input type="radio" name="radio-realtor" value="realtor"
-                    checked={value == 'realtor' ? true : false}
+                    checked={role == 'realtor' ? true : false}
                     onChange={chengeValue} />
                   <label htmlFor='radio-realtor'>Риелтор</label>
 
@@ -79,7 +102,7 @@ export default function Auth() {
 
                 <div className="input__box">
                   <input type="radio" name="radio-agency" value="agency"
-                    checked={value == 'agency' ? true : false}
+                    checked={role == 'agency' ? true : false}
                     onChange={chengeValue} />
                   <label htmlFor='radio-agency'>Агентство недвижимости</label>
 
@@ -87,7 +110,7 @@ export default function Auth() {
 
                 <div className="input__box">
                   <input type="radio" name="radio-builder" value="builder"
-                    checked={value == 'builder' ? true : false}
+                    checked={role == 'builder' ? true : false}
                     onChange={chengeValue} />
                   <label htmlFor='radio-builder'>Застройщик</label>
 
@@ -106,21 +129,21 @@ export default function Auth() {
                     value={phone}
                     onChange={changePhone} />
                 </div>
-                <div className={`input__inner ${mail ? "float-input" : ""} `}>
+                <div className={`input__inner ${email ? "float-input" : ""} `}>
                   <label htmlFor="">Эл. почта <span className='red'>*</span></label>
                   <input
                     type="mail"
                     onChange={changeMail}
-                    value={mail}
+                    value={email}
                     autoComplete="false"
                   />
                 </div>
-                <div className={`input__inner  ${password ? "float-input" : ""}`}>
+                <div className={`input__inner  ${pass ? "float-input" : ""}`}>
                   <label htmlFor="">Придумайте пароль <span className='red'>*</span></label>
                   <input
                     type={types ? "text" : "password"}
                     onChange={changePassword}
-                    value={password}
+                    value={pass}
                     autoComplete="new-password"
                   />
                   <div className={`showpass ${types ? "text" : "password"}`} onClick={handleShow}></div>
@@ -148,7 +171,7 @@ export default function Auth() {
 
         </form> : ""} */}
 
-        <button className=" reset-btn blue-btn submit-btn" onClick={`${(verify) ? submitForm : ""}`}>Далее</button>
+        <button className=" reset-btn blue-btn submit-btn" onClick={() => registration(email, pass, phone, role)}>Далее</button>
       </div>
 
     </main>
