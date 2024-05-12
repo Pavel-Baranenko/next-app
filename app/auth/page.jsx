@@ -54,7 +54,7 @@ export default function Auth() {
   const submitForm = () => {
     console.log("Отправлено")
   }
-  const verify = role && name && phone && email && pass
+  const verify = role && name && phone && email && pass && phone.length > 10
   const handleShow = () => {
     if (types === true) {
       setTypes(false)
@@ -65,13 +65,16 @@ export default function Auth() {
   }
 
   const sendForm = () => {
-    registration(name, email, pass, phone, role)
+    if (verify) {
+      registration(name, email, pass, phone, role)
 
-    if (localStorage.getItem('token')) {
-      // console.log("SDFGHJ");
-      setVerifyaction(true)
-      // sendCode()
+      if (localStorage.getItem('token')) {
+        // console.log("SDFGHJ");
+        setVerifyaction(true)
+        // sendCode()
+      }
     }
+
   }
   // const sendUser = () => {
   //   const requestBody = {

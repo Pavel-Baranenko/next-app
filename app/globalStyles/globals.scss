@@ -1211,3 +1211,76 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
   padding: 12px 20px 12px 50px !important;
 }
+
+.milti-select-inner-float {
+  .multi-select-heading {
+    font-size: 12px;
+    top: 10px;
+    line-height: 16px;
+  }
+
+  .multiselect-container .searchWrapper {
+    padding-top: 30px;
+  }
+}
+
+.multiselect-container {
+  .chip {
+    align-items: center;
+    position: relative;
+    background: #fff;
+    border-radius: 5px;
+    color: #2A344A;
+    display: inline-flex;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    padding: 7px 10px;
+    border: 1px solid #E1EDFD;
+  }
+
+  .chip::after {
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../public/img/cloose.svg);
+    content: "";
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .icon_cancel {
+    opacity: 0;
+    position: relative;
+    z-index: 1;
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+
+
+}
+
+
+
+.optionListContainer::after {
+  position: absolute;
+  display: block;
+  content: "";
+  background-image: url(../../public/img/arrow.svg);
+  right: 20px;
+  top: -21px;
+  z-index: 99;
+  width: 18px;
+  height: 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.code-btn {
+  width: 100%;
+}

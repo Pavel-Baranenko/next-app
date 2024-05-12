@@ -14,8 +14,10 @@ export default function Settings() {
   const [surname, setSurname] = useState();
   const [patronymic, setPatronymic] = useState();
 
+  const [optionscity, setOptionsCity] = useState(["Москва", "Санкт-Петербург"])
+  const [selectedCity, setSelectedCity] = useState([])
 
-  const [options, setOptions] = useState(['Москва', 'Санкт-Петербург', 'Test2', 'Test3'])
+  const length = selectedCity.length
 
 
   const [images, setImages] = useState({
@@ -259,14 +261,17 @@ export default function Settings() {
               Укажите параметры недвижимости, которой сейчас занимаетесь. Система будет информировать вас о поступлении заявок с аналогичными данными
             </div>
             <div className="form__body">
-              {/* <ReactMultiSelectCheckboxes options={options} /> */}
-              <div className="milti-select-inner">
+              <div className={`milti-select-inner ${selectedCity.length == 0 ? "" : "milti-select-inner-float"}`}>
                 <p className="multi-select-heading">Город <span className='red'>*</span></p>
                 <Multiselect
                   placeholder=''
                   isObject={false}
-                  options={["Москва", "Санкт-Петербург"]}
+                  // options={["Москва", "Санкт-Петербург"]}
+                  selectedValues={selectedCity}
+                  options={optionscity}
                   showCheckbox={true}
+                  onSelect={(event) => { setSelectedCity(event), console.log(selectedCity); }}
+                  onRemove={(event) => { setSelectedCity(event), console.log(selectedCity); }}
                 />
               </div>
 
@@ -298,8 +303,8 @@ export default function Settings() {
                   isObject={false}
                   options={["Новая", "Вторичная"]}
                   showCheckbox={true}
-                  onSelect={(event) => { console.log(event); }}
-                  onRemove={(event) => { console.log(event); }}
+                  onSelect={(event) => { console.log(event) }}
+                  onRemove={(event) => { console.log(event) }}
                 />
               </div>
 
