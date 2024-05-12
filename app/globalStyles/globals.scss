@@ -1283,4 +1283,16 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .code-btn {
   width: 100%;
+  margin-top: 0 !important;
+}
+
+@media (max-width:768px) {
+  .container {
+    padding: 0;
+  }
+
+  .blue-btn {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }

@@ -192,7 +192,7 @@ export default function Auth() {
           </div>
 
 
-          <p className="bottom__text">Нажимая на кнопку «Далее», вы соглашаетесь с обработкой <Link href="">персональных данных</Link> и <Link href="">политикой конфиденциальности</Link></p>
+          {!verifyaction && <p className="bottom__text">Нажимая на кнопку «Далее», вы соглашаетесь с обработкой <Link href="">персональных данных</Link> и <Link href="">политикой конфиденциальности</Link></p>}
         </form>
         {verifyaction ? <form className="verify">
           <div className="form__heading">
@@ -210,7 +210,7 @@ export default function Auth() {
         </form> : ""}
 
         {!verifyaction && <button className=" reset-btn blue-btn submit-btn" onClick={sendForm}>Далее</button>}
-        {verifyaction && <button className={code.length == 4 ? " reset-btn blue-btn submit-btn" : 'reset-btn blue-btn code-btn'} onClick={sendCodeForm}>Зарегистрироваться</button>}
+        {verifyaction && <button className={code.length == 4 ? " reset-btn blue-btn" : 'reset-btn blue-btn code-btn'} onClick={sendCodeForm}>Зарегистрироваться</button>}
       </div>
 
     </main >
