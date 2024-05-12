@@ -26,6 +26,7 @@ export const registration = async (name, email, pass, phone, role) => {
     // localStorage.setItem("Jwt", JSON.stringify(response.data.token))
     // localStorage.getItem('Jwt')
     // localStorage.removeItem('Jwt')
+    sendCode()
     console.log(JSON.parse(localStorage.getItem('token')));
   } catch (error) {
     console.log(error);
@@ -45,7 +46,7 @@ export const sendCode = async () => {
       },
     })
 
-    console.log(JSON.parse(localStorage.getItem('token')));
+    console.log(localStorage.getItem('token'));
   } catch (error) {
     console.log(error);
   }

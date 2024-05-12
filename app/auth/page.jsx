@@ -70,7 +70,7 @@ export default function Auth() {
     if (localStorage.getItem('token')) {
       // console.log("SDFGHJ");
       setVerifyaction(true)
-      sendCode()
+      // sendCode()
     }
   }
   // const sendUser = () => {
