@@ -5,6 +5,7 @@ import PhoneInput from 'react-phone-number-input';
 import Select from 'react-select'
 // import 'react-input-verification-code/dist/index.css';
 import 'react-phone-number-input/style.css'
+import Multiselect from 'multiselect-react-dropdown';
 // import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
 export default function Settings() {
@@ -12,6 +13,10 @@ export default function Settings() {
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
   const [patronymic, setPatronymic] = useState();
+
+
+  const [options, setOptions] = useState(['Москва', 'Санкт-Петербург', 'Test2', 'Test3'])
+
 
   const [images, setImages] = useState({
     // title: "",
@@ -27,6 +32,8 @@ export default function Settings() {
       [e.target.name]: e.target.value
     })
   }
+
+  const [hightlight, setHightlight] = useState(false)
 
   const handleFileChange = e => {
     const files = e.target.files;
@@ -53,7 +60,35 @@ export default function Settings() {
     }
   }
 
-  const handleDeleteImg = (e) => { }
+  const handleDeleteImg = (e) => {
+    let target = e.target.parentElement;
+    let targetindex = target.dataset.imgindex;
+    setImages({
+      ...images,
+      // size:
+      photos: [...photos.slice(0, targetindex), ...photos.slice(targetindex + 1)]
+    })
+  }
+  const handlehightlight = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setHightlight(true);
+  }
+  const handleunhightlight = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setHightlight(false)
+  }
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    let dt = e.dataTransfer;
+    let files = dt.files;
+
+    console.log(files);
+  }
+
 
   const changePhone = () => {
     setPhone(event.target.value)
@@ -70,17 +105,6 @@ export default function Settings() {
     setPatronymic(event.target.value.trim());
   }
 
-
-  const sendUser = () => {
-    const requestOptions = {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({})
-    };
-    fetch('https://reqres.in/api/posts', requestOptions)
-      .then(response => response.json())
-      .then(data => this.setState({ postId: data.id }));
-  }
 
 
   return (
@@ -104,9 +128,15 @@ export default function Settings() {
               <div className="file-upload">
                 <form className="" enctype="multipart /form-data">
 
-                  <div className="custom-form-group">
+                  <div className={hightlight ? "custom-form-group file-blue" : "custom-form-group"}>
                     {photos.length == 0 && <div className="custom-file-drop-area ">
-                      <input type="file" name="photos" placeholder="Enter photos" multiple="true" id="filephotos" onChange={handleFileChange} />
+                      <input type="file" name="photos" placeholder="Enter photos" multiple="true" id="filephotos"
+                        onChange={handleFileChange}
+                        onDragEnter={handlehightlight}
+                        onDragOver={handlehightlight}
+                        onDragLeave={handleunhightlight}
+                        onDrop={handleDrop}
+                      />
                       <label for="filephotos">
                         <img src="../img/photos.svg" alt="" />
                         <p>
@@ -230,29 +260,49 @@ export default function Settings() {
             </div>
             <div className="form__body">
               {/* <ReactMultiSelectCheckboxes options={options} /> */}
+              <div className="milti-select-inner">
+                <p className="multi-select-heading">Город <span className='red'>*</span></p>
+                <Multiselect
+                  placeholder=''
+                  isObject={false}
+                  options={["Москва", "Санкт-Петербург"]}
+                  showCheckbox={true}
+                />
+              </div>
 
-              <Select isMulti options={[
+              <div className="milti-select-inner">
+                <p className="multi-select-heading">Формат сделки <span className='red'>*</span></p>
+                <Multiselect
+                  placeholder=''
+                  isObject={false}
+                  options={["Продажа", "Аренда"]}
+                  showCheckbox={true}
+                />
+              </div>
 
-                { value: 'Moskow', label: 'Москва' },
-                { value: 'Spb', label: 'Санкт-Петербург' }
-              ]} placeholder="Город " className='optionalRed' closeMenuOnSelect={false} />
-              <Select isMulti options={[
 
-                { value: 'Moskow', label: 'Москва' },
-                { value: 'Spb', label: 'Санкт-Петербург' }
-              ]} placeholder="Формат сделки " className='optionalRed' />
-              <Select isMulti options={[
+              <div className="milti-select-inner">
+                <p className="multi-select-heading">Тип недвижимости <span className='red'>*</span></p>
+                <Multiselect
+                  placeholder=''
+                  isObject={false}
+                  options={["Квартира", "Апартаменты", "Пентхаус", "Лофт", "Коттедж", "Частный дом", "Вилла", "Дуплекс", "Таунхаус", "Усадьба", "Особняк", "Поместье", "Мезонет", "Замок", "Участок земли", "Остров", "Виноградник", "Отель", "Офис", "Торговля", "Склад", "Общепит", "Производство", "Свободное назначение", "Другое"]}
+                  showCheckbox={true}
+                />
+              </div>
 
-                { value: 'Moskow', label: 'Москва' },
-                { value: 'Spb', label: 'Сsscssc' },
-                { value: 'Spascdb', label: 'scd ff' },
-                { value: 'sc', label: 'Санкт-Петербург' }
-              ]} placeholder="Тип недвижимости " className='optionalRed' closeMenuOnSelect={false} />
-              <Select isMulti options={[
+              <div className="milti-select-inner">
+                <p className="multi-select-heading">Состояние недвижимости <span className='red'>*</span></p>
+                <Multiselect
+                  placeholder=''
+                  isObject={false}
+                  options={["Новая", "Вторичная"]}
+                  showCheckbox={true}
+                  onSelect={(event) => { console.log(event); }}
+                  onRemove={(event) => { console.log(event); }}
+                />
+              </div>
 
-                { value: 'Moskow', label: 'Москва' },
-                { value: 'Spb', label: 'Санкт-Петербург' }
-              ]} placeholder="Состояние недвижимости " className='optionalRed' closeMenuOnSelect={false} />
             </div>
 
           </div>

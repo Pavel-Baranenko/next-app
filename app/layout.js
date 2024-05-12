@@ -1,6 +1,10 @@
 import "./globalStyles/normalize.css";
 import "./globalStyles/globals.scss";
 // import "bootstrap/dist/css/bootstrap.css"
+import { useDispatch, useSelector } from "react-redux";
+// import { decrement, increment } from "@/redux/counterReducer";
+
+
 
 export const metadata = {
   title: "Umnoj",
@@ -10,6 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+
       <body>{children}</body>
     </html>
   );

@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.4",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "chroma-js": "^2.4.2",
+    "multiselect-react-dropdown": "^2.0.25",
     "next": "14.2.3",
     "prettier": "^3.2.5",
     "react": "^18",
@@ -19,7 +21,9 @@
     "react-input-verification-code": "^1.0.2",
     "react-multiselect-checkboxes": "^0.1.1",
     "react-phone-number-input": "^3.4.1",
+    "react-redux": "^9.1.2",
     "react-select": "^5.8.0",
+    "redux": "^5.0.1",
     "sass": "^1.76.0",
     "styled-components": "^6.1.10"
   },

@@ -1,15 +1,19 @@
 "use client"
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import ReactInputVerificationCode from 'react-input-verification-code';
 // import 'react-input-verification-code/dist/index.css';
 // import axios from 'axios';
+// import { Provider } from 'react-redux';
 import 'react-phone-number-input/style.css'
-import { registration } from '@/actions/user';
+import { registration, sendCode, sendCodeUser } from '@/actions/user';
+// import { useSelector, useDispatch } from "react-redux";
 
 
 export default function Auth() {
+  // const dispatch = useDispatch()
+
   const [role, setValue] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,13 +23,24 @@ export default function Auth() {
   const [form, setForm] = useState(false);
 
   const [types, setTypes] = useState(false)
+  const [verifyaction, setVerifyaction] = useState(false)
+
+  const [code, setCode] = useState("")
+
+  const sendCodeForm = () => {
+    sendCodeUser(code)
+  }
+
 
   const chengeValue = () => {
     setValue(event.target.value);
     // console.log(role);
+    console.log(code);
   }
   const changePhone = () => {
-    setPhone(event.target.value)
+    setPhone(event.target.value.trim())
+
+    console.log(phone.replace(/\D/g, ''));
   }
   const changeName = () => {
     setName(event.target.value.trim());
@@ -49,6 +64,15 @@ export default function Auth() {
     }
   }
 
+  const sendForm = () => {
+    registration(name, email, pass, phone, role)
+
+    if (localStorage.getItem('token')) {
+      // console.log("SDFGHJ");
+      setVerifyaction(true)
+      sendCode()
+    }
+  }
   // const sendUser = () => {
   //   const requestBody = {
   //     name: name,
@@ -69,9 +93,20 @@ export default function Auth() {
 
   // }
 
-
+  // <Provider store={store}> {/* Wrap your app in the Provider */}
+  //   <Router>
+  //     <div>
+  //       <Switch>
+  //         <Route exact path="/">
+  //           <Inicio />
+  //         </Route>
+  //       </Switch>
+  //     </div>
+  //   </Router>
+  // </Provider>
 
   return (
+    // <Provider store={store}>
     <main>
       <div className={`container ${verify ? "isGoing" : "notValid"}`}>
         <form className="form" autoComplete="off">
@@ -126,7 +161,7 @@ export default function Auth() {
                   <label htmlFor="">Номер телефона <span className='red'>*</span></label>
                   <PhoneInput
                     defaultCountry="RU"
-                    value={phone}
+                    // value={phone}
                     onChange={changePhone} />
                 </div>
                 <div className={`input__inner ${email ? "float-input" : ""} `}>
@@ -156,7 +191,7 @@ export default function Auth() {
 
           <p className="bottom__text">Нажимая на кнопку «Далее», вы соглашаетесь с обработкой <Link href="">персональных данных</Link> и <Link href="">политикой конфиденциальности</Link></p>
         </form>
-        {/* {verify ? <form className="verify">
+        {verifyaction ? <form className="verify">
           <div className="form__heading">
             Пройдите простую регистрацию
           </div>
@@ -164,16 +199,19 @@ export default function Auth() {
             На номер {phone} был отправлен СМС-код для подтверждения. Если код не поступил, тогда напишите в <Link href="/tg">поддержку</Link>
           </div>
           <div className="verify__body">
-            <ReactInputVerificationCode placeholder="" />
+            <ReactInputVerificationCode placeholder="" onChange={setCode} value={code} />
 
           </div>
 
 
-        </form> : ""} */}
+        </form> : ""}
 
-        <button className=" reset-btn blue-btn submit-btn" onClick={() => registration(email, pass, phone, role)}>Далее</button>
+        {!verifyaction && <button className=" reset-btn blue-btn submit-btn" onClick={sendForm}>Далее</button>}
+        {verifyaction && <button className={code.length == 4 ? " reset-btn blue-btn submit-btn" : 'reset-btn blue-btn code-btn'} onClick={sendCodeForm}>Зарегистрироваться</button>}
       </div>
 
-    </main>
+    </main >
+    // </Provider>
+
   );
 }

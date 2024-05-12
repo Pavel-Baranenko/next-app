@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css'
 import Link from 'next/link';
+// import { loginUser } from '@/actions/user';
+import axios from "axios";
+import { permanentRedirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
   const [login, setLogin] = useState();
@@ -27,6 +31,31 @@ export default function Login() {
     }
     else {
       setTypes(true)
+    }
+  }
+  const LoginUser = () => {
+    if (auth) {
+      loginUser(login, password)
+    }
+  }
+  const router = useRouter()
+  const loginUser = async (login, password) => {
+    const bodyFormData = new FormData();
+    bodyFormData.append("email", login)
+    bodyFormData.append("pass", password)
+    try {
+      const response = await axios({
+        method: "post",
+        url: "https://d.sve.fvds.ru:445/api/v1/users/login",
+        data: bodyFormData
+      })
+      console.log("вход");
+      console.log(response.data.data);
+      localStorage.setItem("token", JSON.stringify(response.data.data.token))
+
+      router.push('/profile')
+    } catch (error) {
+      console.log(error);
     }
   }
   return (
@@ -58,8 +87,9 @@ export default function Login() {
             </div>
 
           </div>
-          <button className=" reset-btn blue-btn submit-btn">Войти</button>
         </form>
+        <button className=" reset-btn blue-btn submit-btn" onClick={LoginUser}>Войти</button>
+
       </div>
 
     </main>
