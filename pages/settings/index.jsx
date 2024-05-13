@@ -8,28 +8,15 @@ import 'react-phone-number-input/style.css'
 import Multiselect from 'multiselect-react-dropdown';
 // import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 // import axios from "axios";
+import '@/app/globalStyles/normalize.css'
+import '@/app/globalStyles/globals.scss'
 import Licence from '@/components/elements/licences';
 
 // export const dynamic = 'dynamic force';
 
 export default function Settings() {
 
-  // const getInfo = async () => {
-  //   try {
-  //     const response = await axios({
-  //       method: "get",
-  //       url: "https://d.sve.fvds.ru:445/api/v1/users/info",
-  //       headers: {
-  //         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-  //       },
-  //     })
-  //     console.log("профиль");
-  //     // window.location.replace("/profile")
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // getInfo()
+
 
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
@@ -152,7 +139,7 @@ export default function Settings() {
           <div className="settings-top">
             <a href="javascript:history.back()" className="back-link mob-none"></a>
             <h4> <a href="javascript:history.back()" className="back-link mob"></a>Настройте ваш профиль риелтора</h4>
-            <span className="user-id">ID {localStorage.getItem('id')}</span>
+            <span className="user-id">ID </span>
           </div>
           <div className="form__inner ">
             <div className="form__heading">
