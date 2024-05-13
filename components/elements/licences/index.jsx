@@ -103,8 +103,8 @@ const Licence = () => {
             ))}
             {photosSecond.length > 0 && <div className="mini-drop-area custom-file-drop-area">
               <input type="file" name="photosSecond" placeholder="Enter photosSecond" multiple="true" id="filephotosSecond" onChange={handleFileChangesecond} />
-              <label htmlFor="filephotosSecond" className='file-input-click'>
-                Загрузите изображение
+              <label htmlFor="filephotosSecond" >
+                <img src="../img/photos.svg" alt="" />
               </label>
             </div>
 
