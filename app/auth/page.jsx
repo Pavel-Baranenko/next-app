@@ -1,14 +1,15 @@
 "use client"
 import Link from 'next/link';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import ReactInputVerificationCode from 'react-input-verification-code';
 // import 'react-input-verification-code/dist/index.css';
-// import axios from 'axios';
+import axios from 'axios';
 // import { Provider } from 'react-redux';
 import 'react-phone-number-input/style.css'
-import { registration, sendCode, sendCodeUser } from '@/actions/user';
+import { registration } from '@/actions/user';
 // import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from 'next/navigation'
 
 
 export default function Auth() {
@@ -22,16 +23,16 @@ export default function Auth() {
   const [pass, setPassword] = useState("");
   const [form, setForm] = useState(false);
 
+
   const [types, setTypes] = useState(false)
   const [verifyaction, setVerifyaction] = useState(false)
 
   const [code, setCode] = useState("")
-
+  const router = useRouter()
   const sendCodeForm = () => {
     sendCodeUser(code)
     // console.log(sendCodeUser(code));
   }
-
 
   const chengeValue = () => {
     setValue(event.target.value);
@@ -73,41 +74,71 @@ export default function Auth() {
         // console.log("SDFGHJ");
         setVerifyaction(true)
         // sendCode()
+        resendOTP()
       }
     }
 
   }
-  // const sendUser = () => {
-  //   const requestBody = {
-  //     name: name,
-  //     email: mail,
-  //     pass: password,
-  //     phone: phone,
-  //     role: role
-  //   };
-  //   const headers = {
-  //     'Authorization': 'Bearer my-token',
-  //     'My-Custom-Header': 'foobar'
-  //   };
-  //   const response = axios.post('https://d.sve.fvds.ru:445/api/v1/users/create', requestBody);
-  //   console.log(response);
-  //   // const data = response.json();
-  //   // this.setState({ postId: data.id });
-  //   // console.log(data);
+  const sendCodeUser = async (code) => {
+    // console.log(code);
+    // const url = "https://d.sve.fvds.ru:445/api/v1/users/activate"
+    // console.log(url);
+    // console.log(JSON.parse(localStorage.getItem('token')));
 
-  // }
+    try {
+      const response = await axios.get(`https://d.sve.fvds.ru:445/api/v1/users/activate?code=${code}`, {
+        headers: {
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        },
+      });
+      console.log(response.data);
+      localStorage.setItem("id", JSON.stringify(response.data.data.id))
+      localStorage.setItem("role", JSON.stringify(response.data.data.user_type))
+      router.push('/settings')
+      console.log("зарегистрирован");
 
-  // <Provider store={store}> {/* Wrap your app in the Provider */}
-  //   <Router>
-  //     <div>
-  //       <Switch>
-  //         <Route exact path="/">
-  //           <Inicio />
-  //         </Route>
-  //       </Switch>
-  //     </div>
-  //   </Router>
-  // </Provider>
+    } catch (error) {
+      console.log(error);
+    }
+    // }
+  }
+
+
+  const [otp, setOtp] = useState("");
+  const [minutes, setMinutes] = useState(3);
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (minutes === 0 && seconds === 0) {
+        resetSendCode()
+      }
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(interval);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [seconds]);
+
+  const resendOTP = () => {
+    setMinutes(3);
+    setSeconds(0);
+  };
+
+  const resetSendCode = () => {
+    alert("asass")
+  }
 
   return (
     // <Provider store={store}>
@@ -204,7 +235,8 @@ export default function Auth() {
           </div>
           <div className="verify__body">
             <ReactInputVerificationCode placeholder="" onChange={setCode} value={code} />
-
+            <div className="verify__timer">Отправить код ещё раз через (<span>{minutes < 10 ? `0${minutes}` : minutes}:
+              {seconds < 10 ? `0${seconds}` : seconds} {minutes === 0 && seconds == 0 ? "<span>отправить</span>" : ""}</span>)</div>
           </div>
 
 

@@ -1,23 +1,57 @@
 "use client"
 import Link from 'next/link';
 import React, { useState } from 'react';
-import PhoneInput from 'react-phone-number-input';
+// import PhoneInput from 'react-phone-number-input';
 import Select from 'react-select'
 // import 'react-input-verification-code/dist/index.css';
 import 'react-phone-number-input/style.css'
 import Multiselect from 'multiselect-react-dropdown';
 // import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
+import axios from "axios";
+import Licence from '@/components/elements/licences';
+
 
 export default function Settings() {
+
+  const getInfo = async () => {
+    try {
+      const response = await axios({
+        method: "get",
+        url: "https://d.sve.fvds.ru:445/api/v1/users/info",
+        headers: {
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        },
+      })
+      console.log("профиль");
+      // window.location.replace("/profile")
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  getInfo()
   const [phone, setPhone] = useState();
+  const [email, setEmail] = useState();
+  const [WhatsApp, setWhatsApp] = useState();
+  const [tg, setTg] = useState();
+  const [viber, setViber] = useState();
+  const [zoom, setZoom] = useState();
   const [name, setName] = useState();
   const [surname, setSurname] = useState();
   const [patronymic, setPatronymic] = useState();
 
   const [optionscity, setOptionsCity] = useState(["Москва", "Санкт-Петербург"])
   const [selectedCity, setSelectedCity] = useState([])
+  const [selectedType, setSelectedType] = useState([])
+  const [SelectedParams, setSelectedParams] = useState([])
+  const [selectedCoast, setSelectedCoast] = useState([])
 
-  const length = selectedCity.length
+  const [about, setAbout] = useState("")
+
+  const changeAbout = () => {
+    if (about.length < 500) {
+      setAbout(event.target.value)
+    }
+  }
 
 
   const [images, setImages] = useState({
@@ -28,6 +62,7 @@ export default function Settings() {
   });
 
   const { title, descr, photos } = images
+
   const handleImg = (e) => {
     setImages({
       ...images,
@@ -107,16 +142,16 @@ export default function Settings() {
     setPatronymic(event.target.value.trim());
   }
 
-
+  const id = localStorage.getItem('id')
 
   return (
     <main>
       <div className="container">
         <div className="form settings" >
           <div className="settings-top">
-            <a href="javascript:history.back()" className="back-link"></a>
-            <h4>Настройте ваш профиль риелтора</h4>
-            <span className="user-id">ID 10445</span>
+            <a href="javascript:history.back()" className="back-link mob-none"></a>
+            <h4> <a href="javascript:history.back()" className="back-link mob"></a>Настройте ваш профиль риелтора</h4>
+            <span className="user-id">ID {id}</span>
           </div>
           <div className="form__inner ">
             <div className="form__heading">
@@ -126,9 +161,9 @@ export default function Settings() {
               Загрузите минимум одно фото для профиля. Вес до 10 мб. Оптимальное разрешение 600 x 600px. Доступный формат jpg / png
             </div>
             <div className="form__body">
-              <div className="file-input"></div>
+              {/* <div className="file-input"></div> */}
               <div className="file-upload">
-                <form className="" enctype="multipart /form-data">
+                <form className="" encType="multipart /form-data">
 
                   <div className={hightlight ? "custom-form-group file-blue" : "custom-form-group"}>
                     {photos.length == 0 && <div className="custom-file-drop-area ">
@@ -139,7 +174,10 @@ export default function Settings() {
                         onDragLeave={handleunhightlight}
                         onDrop={handleDrop}
                       />
-                      <label for="filephotos">
+                      <label htmlFor="filephotos" className='file-input-click mob'>
+                        Загрузите изображение
+                      </label>
+                      <label htmlFor="filephotos" className='mob-none'>
                         <img src="../img/photos.svg" alt="" />
                         <p>
                           Перетащите изображение сюда или
@@ -151,13 +189,13 @@ export default function Settings() {
                     <div className="custom-file-preview">
                       {photos.length > 0 && photos.map((item, index) => (
                         <div className="prev-img" key={index} data-imgindex={index}>
-                          <span onClick={handleDeleteImg}>&times;</span>
+                          <span onClick={handleDeleteImg}></span>
                           <img src={item.src} alt={item.name} />
                         </div>
                       ))}
                       {photos.length > 0 && <div className="mini-drop-area custom-file-drop-area">
                         <input type="file" name="photos" placeholder="Enter photos" multiple="true" id="filephotos" onChange={handleFileChange} />
-                        <label for="filephotos">
+                        <label htmlFor="filephotos">
                           <img src="../img/photos.svg" alt="" />
                         </label>
                       </div>
@@ -215,38 +253,38 @@ export default function Settings() {
               Контакты <span className='red'>*</span>
             </div>
             <div className="form__line">
-              Все данные, кроме эл. почтывидны пользователям, которые откроют вам свои контакты
+              Все данные, кроме эл. почты видны пользователям, которые откроют вам свои контакты
             </div>
             <div className="form__body">
               <div className="form-grid-optional">
-                <div className={`input__inner ${name ? "float-input" : ""}`}>
+                <div className={`input__inner ${phone ? "float-input" : ""}`}>
                   <label htmlFor="">Телефон <span className='red'>*</span></label>
-                  <input type="number" onChange={changeName} value={name} />
+                  <input type="number" onChange={changePhone} value={phone} />
                 </div>
-                <div className={`input__inner ${surname ? "float-input" : ""}`}>
+                <div className={`input__inner ${email ? "float-input" : ""}`}>
                   <label htmlFor="">Эл. почта<span className='red'>*</span></label>
-                  <input type="mail" onChange={changeSurname} value={surname} />
+                  <input type="mail" onChange={(event) => { setEmail(event.target.value) }} value={email} />
                 </div>
 
               </div>
               <div className="form-grid-optional-title">Мессенджеры</div>
 
               <div className="form-grid-optional">
-                <div className={`input__inner ${name ? "float-input" : ""}`}>
+                <div className={`input__inner ${WhatsApp ? "float-input" : ""}`}>
                   <label htmlFor="">WhatsApp</label>
-                  <input type="text" onChange={changeName} value={name} />
+                  <input type="text" onChange={(e) => { setWhatsApp(e.target.value) }} value={WhatsApp} />
                 </div>
-                <div className={`input__inner ${name ? "float-input" : ""}`}>
+                <div className={`input__inner ${tg ? "float-input" : ""}`}>
                   <label htmlFor="">Telegram</label>
-                  <input type="text" onChange={changeName} value={name} />
+                  <input type="text" onChange={(e) => { setTg(e.target.value) }} value={tg} />
                 </div>
-                <div className={`input__inner ${name ? "float-input" : ""}`}>
+                <div className={`input__inner ${viber ? "float-input" : ""}`}>
                   <label htmlFor="">Viber</label>
-                  <input type="text" onChange={changeName} value={name} />
+                  <input type="text" onChange={(e) => { setViber(e.target.value) }} value={viber} />
                 </div>
-                <div className={`input__inner ${name ? "float-input" : ""}`}>
+                <div className={`input__inner ${zoom ? "float-input" : ""}`}>
                   <label htmlFor="">Zoom</label>
-                  <input type="text" onChange={changeName} value={name} />
+                  <input type="text" onChange={(e) => { setZoom(e.target.value) }} value={zoom} />
                 </div>
 
               </div>
@@ -270,50 +308,92 @@ export default function Settings() {
                   selectedValues={selectedCity}
                   options={optionscity}
                   showCheckbox={true}
-                  onSelect={(event) => { setSelectedCity(event), console.log(selectedCity); }}
-                  onRemove={(event) => { setSelectedCity(event), console.log(selectedCity); }}
+                  onSelect={(event) => { setSelectedCity(event) }}
+                  onRemove={(event) => { setSelectedCity(event) }}
                 />
               </div>
 
-              <div className="milti-select-inner">
+              <div className={`milti-select-inner ${selectedType.length == 0 ? "" : "milti-select-inner-float"}`}>
                 <p className="multi-select-heading">Формат сделки <span className='red'>*</span></p>
                 <Multiselect
                   placeholder=''
                   isObject={false}
+                  selectedValues={selectedType}
+
                   options={["Продажа", "Аренда"]}
                   showCheckbox={true}
+                  onSelect={(event) => { setSelectedType(event) }}
+                  onRemove={(event) => { setSelectedType(event) }}
                 />
               </div>
 
 
-              <div className="milti-select-inner">
+              <div className={`milti-select-inner  ${SelectedParams.length == 0 ? "" : "milti-select-inner-float"}`}>
                 <p className="multi-select-heading">Тип недвижимости <span className='red'>*</span></p>
                 <Multiselect
                   placeholder=''
                   isObject={false}
+                  selectedValues={SelectedParams}
                   options={["Квартира", "Апартаменты", "Пентхаус", "Лофт", "Коттедж", "Частный дом", "Вилла", "Дуплекс", "Таунхаус", "Усадьба", "Особняк", "Поместье", "Мезонет", "Замок", "Участок земли", "Остров", "Виноградник", "Отель", "Офис", "Торговля", "Склад", "Общепит", "Производство", "Свободное назначение", "Другое"]}
                   showCheckbox={true}
+                  onSelect={(event) => { setSelectedParams(event) }}
+                  onRemove={(event) => { setSelectedParams(event) }}
                 />
               </div>
 
-              <div className="milti-select-inner">
+              <div className={`milti-select-inner  ${selectedCoast.length == 0 ? "" : "milti-select-inner-float"}`}>
                 <p className="multi-select-heading">Состояние недвижимости <span className='red'>*</span></p>
                 <Multiselect
                   placeholder=''
                   isObject={false}
+                  selectedValues={selectedCoast}
+
                   options={["Новая", "Вторичная"]}
                   showCheckbox={true}
-                  onSelect={(event) => { console.log(event) }}
-                  onRemove={(event) => { console.log(event) }}
+                  onSelect={(event) => { setSelectedCoast(event) }}
+                  onRemove={(event) => { setSelectedCoast(event) }}
                 />
               </div>
 
             </div>
 
           </div>
-          <button className=" reset-btn blue-btn submit-btn">Далее</button>
+          <div className="form__inner ">
+            <div className="form__heading">
+              Лицензии и сертификаты
+            </div>
 
-          <p className="bottom__text">Нажимая на кнопку «Далее», вы соглашаетесь с обработкой <Link href="">персональных данных</Link> и <Link href="">политикой конфиденциальности</Link></p>
+            <div className="form__body">
+
+
+              <Licence />
+            </div>
+
+          </div>
+          <div className="form__inner ">
+            <div className="form__heading">
+              О себе
+            </div>
+            <div className="form__line">
+              Напишите о себе и преимуществах работы с вами
+            </div>
+            <div className="form__body">
+              <div className="textarea-box">
+                <div className="text-counter">
+                  {about.length}/500
+                </div>
+                <textarea onChange={changeAbout} value={about} placeholder='О себе' />
+
+              </div>
+              <div className="add-video">
+                <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="../img/plus-video.svg" alt="" /></button>
+              </div>
+            </div>
+
+          </div>
+          <button className=" reset-btn blue-btn submit-btn">Создать профиль</button>
+
+
         </div>
 
 

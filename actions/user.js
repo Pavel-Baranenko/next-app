@@ -67,6 +67,8 @@ export const sendCodeUser = async (code) => {
       },
     });
     console.log(response.data);
+
+
     console.log("зарегистрирован");
 
   } catch (error) {
