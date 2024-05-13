@@ -29,6 +29,7 @@ export default function Auth() {
 
   const sendCodeForm = () => {
     sendCodeUser(code)
+    // console.log(sendCodeUser(code));
   }
 
 

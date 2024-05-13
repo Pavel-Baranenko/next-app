@@ -27,7 +27,7 @@ export const registration = async (name, email, pass, phone, role) => {
     // localStorage.getItem('Jwt')
     // localStorage.removeItem('Jwt')
     sendCode()
-    console.log(JSON.parse(localStorage.getItem('token')));
+    // console.log(JSON.parse(localStorage.getItem('token')));
   } catch (error) {
     console.log(error);
   }
@@ -46,7 +46,7 @@ export const sendCode = async () => {
       },
     })
 
-    console.log(localStorage.getItem('token'));
+    // console.log(localStorage.getItem('token'));
   } catch (error) {
     console.log(error);
   }
@@ -55,20 +55,13 @@ export const sendCode = async () => {
 
 
 export const sendCodeUser = async (code) => {
-  console.log(code);
-  const url = "https://d.sve.fvds.ru:445/api/v1/users/activate"
-  console.log(url);
-  console.log(JSON.parse(localStorage.getItem('token')));
+  // console.log(code);
+  // const url = "https://d.sve.fvds.ru:445/api/v1/users/activate"
+  // console.log(url);
+  // console.log(JSON.parse(localStorage.getItem('token')));
 
   try {
-    // const response = await axios.get({
-    //   url: url,
-    //   params: { "code": code },
-    //   headers: {
-    //     'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-    //   },
-    // })
-    const response = await axios.get(`https://d.sve.fvds.ru:445/api/v1/users/activate=?${code}`, {
+    const response = await axios.get(`https://d.sve.fvds.ru:445/api/v1/users/activate?code=${code}`, {
       headers: {
         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
