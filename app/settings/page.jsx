@@ -144,7 +144,6 @@ export default function Settings() {
     setPatronymic(event.target.value.trim());
   }
 
-  const id = localStorage.getItem('id')
 
   return (
     <main>
@@ -153,7 +152,7 @@ export default function Settings() {
           <div className="settings-top">
             <a href="javascript:history.back()" className="back-link mob-none"></a>
             <h4> <a href="javascript:history.back()" className="back-link mob"></a>Настройте ваш профиль риелтора</h4>
-            <span className="user-id">ID {id}</span>
+            <span className="user-id">ID {localStorage.getItem('id')}</span>
           </div>
           <div className="form__inner ">
             <div className="form__heading">
