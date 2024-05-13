@@ -7,7 +7,7 @@ import Select from 'react-select'
 import 'react-phone-number-input/style.css'
 import Multiselect from 'multiselect-react-dropdown';
 // import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
-import axios from "axios";
+// import axios from "axios";
 import Licence from '@/components/elements/licences';
 
 // export const dynamic = 'dynamic force';
