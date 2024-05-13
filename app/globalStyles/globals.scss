@@ -1295,4 +1295,14 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-left: 20px;
     margin-right: 20px;
   }
+
+  .form {
+    margin-top: 20px;
+  }
+}
+
+.isGoing {
+  .blue-btn.reset-btn {
+    width: 100%;
+  }
 }
