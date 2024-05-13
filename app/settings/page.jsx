@@ -1,5 +1,5 @@
 "use client"
-import Link from 'next/link';
+// import Link from 'next/link';
 import React, { useState } from 'react';
 // import PhoneInput from 'react-phone-number-input';
 import Select from 'react-select'
@@ -10,6 +10,7 @@ import Multiselect from 'multiselect-react-dropdown';
 import axios from "axios";
 import Licence from '@/components/elements/licences';
 
+export const dynamic = 'dynamic force';
 
 export default function Settings() {
 
