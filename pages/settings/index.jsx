@@ -169,7 +169,7 @@ export default function Settings() {
                         Загрузите изображение
                       </label>
                       <label htmlFor="filephotos" className='mob-none'>
-                        <img src="../img/photos.svg" alt="" />
+                        <img src="./img/photos.svg" alt="" />
                         <p>
                           Перетащите изображение сюда или
                           <span className='blue'>загрузите с устройства</span>
@@ -187,7 +187,7 @@ export default function Settings() {
                       {photos.length > 0 && <div className="mini-drop-area custom-file-drop-area">
                         <input type="file" name="photos" placeholder="Enter photos" multiple="true" id="filephotos" onChange={handleFileChange} />
                         <label htmlFor="filephotos">
-                          <img src="../img/photos.svg" alt="" />
+                          <img src="./img/photos.svg" alt="" />
                         </label>
                       </div>
 
@@ -377,7 +377,7 @@ export default function Settings() {
 
               </div>
               <div className="add-video">
-                <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="../img/plus-video.svg" alt="" /></button>
+                <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="./img/plus-video.svg" alt="" /></button>
               </div>
             </div>
 
