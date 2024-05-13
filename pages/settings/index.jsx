@@ -1,6 +1,6 @@
 "use client"
 // import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import PhoneInput from 'react-phone-number-input';
 import Select from 'react-select'
 // import 'react-input-verification-code/dist/index.css';
@@ -16,6 +16,9 @@ import Licence from '@/components/elements/licences';
 
 export default function Settings() {
 
+
+
+  const [id_user, setId] = useState(() => { JSON.parse(localStorage.getItem('id')) });
 
 
   const [phone, setPhone] = useState();
@@ -139,7 +142,7 @@ export default function Settings() {
           <div className="settings-top">
             <a href="javascript:history.back()" className="back-link mob-none"></a>
             <h4> <a href="javascript:history.back()" className="back-link mob"></a>Настройте ваш профиль риелтора</h4>
-            <span className="user-id">ID {localStorage.getItem('id')}</span>
+            <span className="user-id">ID {id}</span>
           </div>
           <div className="form__inner ">
             <div className="form__heading">
