@@ -94,7 +94,7 @@ export default function Auth() {
       console.log(response.data);
       localStorage.setItem("id", JSON.stringify(response.data.data.id))
       localStorage.setItem("role", JSON.stringify(response.data.data.user_type))
-      // router.push('/settings')
+      router.push('/settings-profile')
       console.log("зарегистрирован");
 
     } catch (error) {
