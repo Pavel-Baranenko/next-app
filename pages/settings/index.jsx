@@ -204,7 +204,7 @@ export default function Settings() {
             </div>
 
           </div>
-          <div className="form__inner ">
+          {photos.length > 0 && <div className="form__inner ">
             <div className="form__heading">
               Личные данные  <span className='red'>*</span>
             </div>
@@ -232,14 +232,13 @@ export default function Settings() {
               </div>
               {/* isMulti */}
               <Select options={[
-
                 { value: 'Moskow', label: 'Москва' },
                 { value: 'Spb', label: 'Санкт-Петербург' }
               ]} placeholder="Город" className='optionalRed' />
             </div>
 
-          </div>
-          <div className="form__inner ">
+          </div>}
+          {(surname && name) && <div className="form__inner ">
             <div className="form__heading">
               Контакты <span className='red'>*</span>
             </div>
@@ -281,108 +280,124 @@ export default function Settings() {
               </div>
             </div>
 
-          </div>
-          <div className="form__inner ">
-            <div className="form__heading">
-              Параметры недвижимости <span className='red'>*</span>
-            </div>
-            <div className="form__line">
-              Укажите параметры недвижимости, которой сейчас занимаетесь. Система будет информировать вас о поступлении заявок с аналогичными данными
-            </div>
-            <div className="form__body">
-              <div className={`milti-select-inner ${selectedCity.length == 0 ? "" : "milti-select-inner-float"}`}>
-                <p className="multi-select-heading">Город <span className='red'>*</span></p>
-                <Multiselect
-                  placeholder=''
-                  isObject={false}
-                  // options={["Москва", "Санкт-Петербург"]}
-                  selectedValues={selectedCity}
-                  options={optionscity}
-                  showCheckbox={true}
-                  onSelect={(event) => { setSelectedCity(event) }}
-                  onRemove={(event) => { setSelectedCity(event) }}
-                />
-              </div>
-
-              <div className={`milti-select-inner ${selectedType.length == 0 ? "" : "milti-select-inner-float"}`}>
-                <p className="multi-select-heading">Формат сделки <span className='red'>*</span></p>
-                <Multiselect
-                  placeholder=''
-                  isObject={false}
-                  selectedValues={selectedType}
-
-                  options={["Продажа", "Аренда"]}
-                  showCheckbox={true}
-                  onSelect={(event) => { setSelectedType(event) }}
-                  onRemove={(event) => { setSelectedType(event) }}
-                />
-              </div>
-
-
-              <div className={`milti-select-inner  ${SelectedParams.length == 0 ? "" : "milti-select-inner-float"}`}>
-                <p className="multi-select-heading">Тип недвижимости <span className='red'>*</span></p>
-                <Multiselect
-                  placeholder=''
-                  isObject={false}
-                  selectedValues={SelectedParams}
-                  options={["Квартира", "Апартаменты", "Пентхаус", "Лофт", "Коттедж", "Частный дом", "Вилла", "Дуплекс", "Таунхаус", "Усадьба", "Особняк", "Поместье", "Мезонет", "Замок", "Участок земли", "Остров", "Виноградник", "Отель", "Офис", "Торговля", "Склад", "Общепит", "Производство", "Свободное назначение", "Другое"]}
-                  showCheckbox={true}
-                  onSelect={(event) => { setSelectedParams(event) }}
-                  onRemove={(event) => { setSelectedParams(event) }}
-                />
-              </div>
-
-              <div className={`milti-select-inner  ${selectedCoast.length == 0 ? "" : "milti-select-inner-float"}`}>
-                <p className="multi-select-heading">Состояние недвижимости <span className='red'>*</span></p>
-                <Multiselect
-                  placeholder=''
-                  isObject={false}
-                  selectedValues={selectedCoast}
-
-                  options={["Новая", "Вторичная"]}
-                  showCheckbox={true}
-                  onSelect={(event) => { setSelectedCoast(event) }}
-                  onRemove={(event) => { setSelectedCoast(event) }}
-                />
-              </div>
-
-            </div>
-
-          </div>
-          <div className="form__inner ">
-            <div className="form__heading">
-              Лицензии и сертификаты
-            </div>
-
-            <div className="form__body">
-
-
-              <Licence />
-            </div>
-
-          </div>
-          <div className="form__inner ">
-            <div className="form__heading">
-              О себе
-            </div>
-            <div className="form__line">
-              Напишите о себе и преимуществах работы с вами
-            </div>
-            <div className="form__body">
-              <div className="textarea-box">
-                <div className="text-counter">
-                  {about.length}/500
+          </div>}
+          {(email && phone) &&
+            <>
+              <div className="form__inner ">
+                <div className="form__heading">
+                  Параметры недвижимости <span className='red'>*</span>
                 </div>
-                <textarea onChange={changeAbout} value={about} placeholder='О себе' />
+                <div className="form__line">
+                  Укажите параметры недвижимости, которой сейчас занимаетесь. Система будет информировать вас о поступлении заявок с аналогичными данными
+                </div>
+                <div className="form__body">
+                  <div className={`milti-select-inner ${selectedCity.length == 0 ? "" : "milti-select-inner-float"}`}>
+                    <p className="multi-select-heading">Город <span className='red'>*</span></p>
+                    <Multiselect
+                      placeholder=''
+                      isObject={false}
+                      // options={["Москва", "Санкт-Петербург"]}
+                      selectedValues={selectedCity}
+                      options={optionscity}
+                      showCheckbox={true}
+                      onSelect={(event) => { setSelectedCity(event) }}
+                      onRemove={(event) => { setSelectedCity(event) }}
+                    />
+                  </div>
+
+                  <div className={`milti-select-inner ${selectedType.length == 0 ? "" : "milti-select-inner-float"}`}>
+                    <p className="multi-select-heading">Формат сделки <span className='red'>*</span></p>
+                    <Multiselect
+                      placeholder=''
+                      isObject={false}
+                      selectedValues={selectedType}
+
+                      options={["Продажа", "Аренда"]}
+                      showCheckbox={true}
+                      onSelect={(event) => { setSelectedType(event) }}
+                      onRemove={(event) => { setSelectedType(event) }}
+                    />
+                  </div>
+
+
+                  <div className={`milti-select-inner  ${SelectedParams.length == 0 ? "" : "milti-select-inner-float"}`}>
+                    <p className="multi-select-heading">Тип недвижимости <span className='red'>*</span></p>
+                    <Multiselect
+                      placeholder=''
+                      isObject={false}
+                      selectedValues={SelectedParams}
+                      options={["Квартира", "Апартаменты", "Пентхаус", "Лофт", "Коттедж", "Частный дом", "Вилла", "Дуплекс", "Таунхаус", "Усадьба", "Особняк", "Поместье", "Мезонет", "Замок", "Участок земли", "Остров", "Виноградник", "Отель", "Офис", "Торговля", "Склад", "Общепит", "Производство", "Свободное назначение", "Другое"]}
+                      showCheckbox={true}
+                      onSelect={(event) => { setSelectedParams(event) }}
+                      onRemove={(event) => { setSelectedParams(event) }}
+                    />
+                  </div>
+
+                  <div className={`milti-select-inner  ${selectedCoast.length == 0 ? "" : "milti-select-inner-float"}`}>
+                    <p className="multi-select-heading">Состояние недвижимости <span className='red'>*</span></p>
+                    <Multiselect
+                      placeholder=''
+                      isObject={false}
+                      selectedValues={selectedCoast}
+
+                      options={["Новая", "Вторичная"]}
+                      showCheckbox={true}
+                      onSelect={(event) => { setSelectedCoast(event) }}
+                      onRemove={(event) => { setSelectedCoast(event) }}
+                    />
+                  </div>
+
+                </div>
 
               </div>
-              <div className="add-video">
-                <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="./img/plus-video.svg" alt="" /></button>
-              </div>
-            </div>
 
-          </div>
-          <button className=" reset-btn blue-btn submit-btn">Создать профиль</button>
+              <div className="form__inner ">
+                <div className="form__heading">
+                  Лицензии и сертификаты
+                </div>
+
+                <div className="form__body">
+
+
+                  <Licence />
+                </div>
+
+              </div>
+              <div className="form__inner ">
+                <div className="form__heading">
+                  О себе
+                </div>
+                <div className="form__line">
+                  Напишите о себе и преимуществах работы с вами
+                </div>
+                <div className="form__body">
+                  <div className="textarea-box">
+                    <div className="text-counter">
+                      {about.length}/500
+                    </div>
+                    <textarea onChange={changeAbout} value={about} placeholder='О себе' />
+
+                  </div>
+                  <div className="add-video">
+                    <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="./img/plus-video.svg" alt="" /></button>
+                  </div>
+                </div>
+
+              </div>
+              <button className=" reset-btn blue-btn submit-btn">Создать профиль</button>
+
+            </>
+
+
+
+
+
+          }
+          {(email && phone) &&
+            <>
+
+            </>
+          }
 
 
         </div>
