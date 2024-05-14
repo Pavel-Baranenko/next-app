@@ -66,8 +66,9 @@ export const sendCodeUser = async (code) => {
         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
     });
-    console.log(response.data);
-
+    localStorage.setItem("token", JSON.stringify(response.data.data.token))
+    localStorage.setItem("id", JSON.stringify(response.data.data.id))
+    localStorage.setItem("role", JSON.stringify(response.data.data.user_type))
 
     console.log("зарегистрирован");
 
@@ -76,10 +77,6 @@ export const sendCodeUser = async (code) => {
   }
   // }
 }
-
-
-
-
 
 
 

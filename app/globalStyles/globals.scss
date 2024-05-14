@@ -1486,3 +1486,47 @@ textarea {
 .css-8mmkcg {
   display: none !important;
 }
+
+.milti-select-inner {
+  position: relative;
+}
+
+.milti-select-inner::after {
+  position: absolute;
+  display: block;
+  content: "";
+  background-image: url(../../public/img/arrow.svg);
+  width: 18px;
+  height: 18px;
+  top: 21px;
+  right: 20px;
+  z-index: 7;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.milti-select-inner-float::after {
+  transform: rotate(-180deg);
+}
+
+// .icon_down_dir:before {
+//   // position: absolute;
+//   display: block;
+//   content: "";
+//   background-image: url(../../public/img/arrow.svg);
+//   width: 18px;
+//   height: 18px;
+//   top: 21px;
+//   right: 20px;
+//   z-index: 7;
+//   background-repeat: no-repeat;
+//   background-position: center;
+// }
+
+// .icon_down_dir {
+//   position: absolute;
+//   right: 20px;
+//   top: 50%;
+//   transform: translateY(-50%);
+//   width: 1px;
+// }

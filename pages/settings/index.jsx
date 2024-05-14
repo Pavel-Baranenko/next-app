@@ -294,8 +294,10 @@ export default function Settings() {
                   <div className={`milti-select-inner ${selectedCity.length == 0 ? "" : "milti-select-inner-float"}`}>
                     <p className="multi-select-heading">Город <span className='red'>*</span></p>
                     <Multiselect
+                      // customArrow
                       placeholder=''
                       isObject={false}
+                      // showArrow={true}
                       // options={["Москва", "Санкт-Петербург"]}
                       selectedValues={selectedCity}
                       options={optionscity}
