@@ -11,15 +11,26 @@ import Multiselect from 'multiselect-react-dropdown';
 import '@/app/globalStyles/normalize.css'
 import '@/app/globalStyles/globals.scss'
 import Licence from '@/components/elements/licences';
-
+import axios from 'axios';
 // export const dynamic = 'dynamic force';
 
 export default function Settings() {
+  // const id = ""
+  const getInfo = async () => {
 
-
-
-  // const [id_user, setId] = useState(() => { JSON.parse(localStorage.getItem('id')) });
-
+    try {
+      const response = await axios.get("https://d.sve.fvds.ru:445/api/v1/users/info", {
+        headers: {
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        },
+      });
+      // id = (JSON.parse(localStorage.getItem('id')))
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  getInfo()
 
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
@@ -39,6 +50,19 @@ export default function Settings() {
 
   const [about, setAbout] = useState("")
 
+  const [videos, setVideos] = useState({
+    titles: [],
+    videoslink: []
+  });
+  // const { titles, videoslink } = videosmes
+
+  const addVideo = () => {
+    // setVideos(
+    //   ...videosmes,
+    //   videoslink: [...videoslink....photos.slice(targetindex + 1)]
+    // )
+    console.log("aaa");
+  }
   const changeAbout = () => {
     if (about.length < 500) {
       setAbout(event.target.value)
@@ -54,7 +78,7 @@ export default function Settings() {
   });
 
   const { title, descr, photos } = images
-
+  // const avatar = photos[0]
   const handleImg = (e) => {
     setImages({
       ...images,
@@ -118,11 +142,9 @@ export default function Settings() {
     console.log(files);
   }
 
-
   const changePhone = () => {
     setPhone(event.target.value)
   }
-
 
   const changeName = () => {
     setName(event.target.value.trim());
@@ -134,7 +156,28 @@ export default function Settings() {
     setPatronymic(event.target.value.trim());
   }
 
+  const saveProfile = () => {
+    // const formData = new FormData();
+    // formData.append("avatar", photos[0])
+    // try {
+    //   // const response = await axios.get("https://d.sve.fvds.ru:445/api/v1/users/update", {
+    //   //   headers: {
+    //   //     'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+    //   //   },
+    //   // });
 
+    //   const resImage = axios.post('https://d.sve.fvds.ru:445/api/v1/users/update', formData, {
+    //     headers: {
+    //       'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+    //       'Content-Type': 'multipart/form-data'
+    //     }
+    //   })
+    //   // console.log(response.data);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  }
+  // const id = (localStorage.getItem('id'))
   return (
     <main>
       <div className="container">
@@ -334,20 +377,22 @@ export default function Settings() {
                       onRemove={(event) => { setSelectedParams(event) }}
                     />
                   </div>
+                  {!(SelectedParams.length == 1 && SelectedParams[0] == "Участок земли") &&
+                    <div className={`milti-select-inner  ${selectedCoast.length == 0 ? "" : "milti-select-inner-float"}`}>
+                      <p className="multi-select-heading">Состояние недвижимости <span className='red'>*</span></p>
+                      <Multiselect
+                        placeholder=''
+                        isObject={false}
+                        selectedValues={selectedCoast}
 
-                  <div className={`milti-select-inner  ${selectedCoast.length == 0 ? "" : "milti-select-inner-float"}`}>
-                    <p className="multi-select-heading">Состояние недвижимости <span className='red'>*</span></p>
-                    <Multiselect
-                      placeholder=''
-                      isObject={false}
-                      selectedValues={selectedCoast}
+                        options={["Новая", "Вторичная"]}
+                        showCheckbox={true}
+                        onSelect={(event) => { setSelectedCoast(event) }}
+                        onRemove={(event) => { setSelectedCoast(event) }}
+                      />
+                    </div>
+                  }
 
-                      options={["Новая", "Вторичная"]}
-                      showCheckbox={true}
-                      onSelect={(event) => { setSelectedCoast(event) }}
-                      onRemove={(event) => { setSelectedCoast(event) }}
-                    />
-                  </div>
 
                 </div>
 
@@ -381,12 +426,28 @@ export default function Settings() {
 
                   </div>
                   <div className="add-video">
-                    <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="./img/plus-video.svg" alt="" /></button>
+
+
+                    <div className="video__box">
+                      {videos.videoslink.length > 0 && videos.videoslink.map((item, index) => (
+                        <div className="prev-img" key={index} data-videoindex={index}>
+                          <div className="input-video-title__box">
+                            <label htmlFor="title">Название видео</label>
+                            <input type="text" name='title' value={videos.titles[index]} />
+                          </div>
+                          <div className="input-video__box">
+                            <label htmlFor="video">Ссылка на видео</label>
+                            <input type="text" name='video' value={videos.videoslink[index]} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="./img/plus-video.svg" alt="" onClick={addVideo} /></button>
                   </div>
                 </div>
 
               </div>
-              <button className=" reset-btn blue-btn submit-btn">Создать профиль</button>
+              <button className=" reset-btn blue-btn submit-btn" onClick={saveProfile}>Создать профиль</button>
 
             </>
 
@@ -395,11 +456,11 @@ export default function Settings() {
 
 
           }
-          {(email && phone) &&
+          {/* {(email && phone) &&
             <>
 
             </>
-          }
+          } */}
 
 
         </div>

@@ -92,6 +92,7 @@ export default function Auth() {
         },
       });
       console.log(response.data);
+      localStorage.setItem("token", JSON.stringify(response.data.data.token))
       localStorage.setItem("id", JSON.stringify(response.data.data.id))
       localStorage.setItem("role", JSON.stringify(response.data.data.user_type))
       router.push('/settings')
@@ -137,7 +138,8 @@ export default function Auth() {
   };
 
   const resetSendCode = () => {
-    alert("asass")
+    // alert("asass")
+    console.log("code");
   }
 
   return (
