@@ -1,0 +1,22 @@
+.howitworks {
+  padding-bottom: 150px;
+}
+
+.grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 110px;
+}
+
+.title {
+  margin: 50px 0 20px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 18px;
+  color: #3B4A69;
+  line-height: 1.5;
+}

@@ -1,0 +1,138 @@
+.hero {
+  // background-image: url(./../public/img/hero-bg.jpg);
+  background-image: url(../../../public/img/bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  padding: 170px 0 200px 0;
+  text-align: center;
+}
+
+.hero__title {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1;
+}
+
+.hero__subtitle {
+  margin: 40px auto 40px auto;
+  display: block;
+  font-size: 22px;
+  color: #3B4A69;
+  line-height: 1.6;
+  max-width: 460px;
+}
+
+.hero__btn {
+  padding: 20px 36px;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fff;
+  border-radius: 10px;
+  background-color: #4E6AF3;
+
+  span {
+    position: relative;
+    padding-left: 28px;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      background-image: url(../../../public/img/rizer.svg);
+      width: 18px;
+      height: 18px;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.slide__cart {
+  width: 340px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: left;
+}
+
+.slide {
+  width: 340px !important;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 0 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+
+
+.role {
+  color: #7786A5;
+}
+
+.date {
+  font-size: 12px;
+  color: #7786A5;
+  line-height: 16px;
+}
+
+.title {
+  color: #4E6AF3;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.price {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.bottom__item {
+  font-size: 12px;
+  line-height: 16px;
+  padding: 3px 5px;
+  border-radius: 5px;
+  background-color: #F1F7FF;
+}
+
+.Swiper {
+  .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.SwiperReverce {
+  .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+}

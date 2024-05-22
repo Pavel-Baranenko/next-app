@@ -1,0 +1,32 @@
+.questanswer {
+  margin-bottom: 150px;
+
+  .section__title {
+    margin-bottom: 50px;
+  }
+}
+
+.box {
+  display: flex;
+  gap: 140px;
+}
+
+.acc {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right {
+  p {
+    font-size: 18px;
+    color: #3B4A69;
+    line-height: 1.5;
+    margin-bottom: 50px;
+  }
+
+  a {
+    color: #4E6AF3;
+  }
+}

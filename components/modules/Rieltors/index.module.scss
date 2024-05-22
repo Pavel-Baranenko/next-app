@@ -1,0 +1,111 @@
+// background-image: url(../../../public/img/format.svg);
+
+.rieltors {
+  margin-bottom: 150px;
+  overflow-x: hidden;
+}
+
+.grid {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.img {
+  width: 70px;
+  height: 70px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.verify {
+  margin-left: 6px;
+  width: 18px;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(../../../public/img/pass-up.svg);
+}
+
+.role {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 11px;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.4;
+
+}
+
+.rating {
+  padding-left: 19px;
+  position: relative;
+  padding-right: 8px;
+  margin-right: 8px;
+
+  &::before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-image: url(../../../public/img/star.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 2px;
+    height: 12px;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #C7D2E9;
+    border-radius: 10px;
+  }
+}
+
+.feeds {
+  color: #7786A5;
+}
+
+.more {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4E6AF3;
+}

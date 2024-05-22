@@ -1,18 +1,12 @@
 "use client"
-// import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
-// import PhoneInput from 'react-phone-number-input';
 import Select from 'react-select'
-// import 'react-input-verification-code/dist/index.css';
 import 'react-phone-number-input/style.css'
 import Multiselect from 'multiselect-react-dropdown';
-// import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
-// import axios from "axios";
 import '@/app/globalStyles/normalize.css'
 import '@/app/globalStyles/globals.scss'
 import Licence from '@/components/elements/licences';
 import axios from 'axios';
-// export const dynamic = 'dynamic force';
 
 export default function Settings() {
   // const id = ""
@@ -30,7 +24,7 @@ export default function Settings() {
       console.log(error);
     }
   }
-  getInfo()
+  // getInfo()
 
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
@@ -156,26 +150,34 @@ export default function Settings() {
     setPatronymic(event.target.value.trim());
   }
 
-  const saveProfile = () => {
-    // const formData = new FormData();
+  const saveProfile = (name, surname, patronymic, phone, email, WhatsApp, tg, viber, zoom) => {
+    const formData = new FormData();
     // formData.append("avatar", photos[0])
-    // try {
-    //   // const response = await axios.get("https://d.sve.fvds.ru:445/api/v1/users/update", {
-    //   //   headers: {
-    //   //     'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-    //   //   },
-    //   // });
-
-    //   const resImage = axios.post('https://d.sve.fvds.ru:445/api/v1/users/update', formData, {
-    //     headers: {
-    //       'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-    //       'Content-Type': 'multipart/form-data'
-    //     }
-    //   })
-    //   // console.log(response.data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    formData.append("first_name", name)
+    formData.append("last_name", surname)
+    formData.append("middlet_name", patronymic)
+    formData.append("phone", phone)
+    formData.append("email", email)
+    formData.append("watsapp", WhatsApp)
+    formData.append("telegram", tg)
+    formData.append("viber", viber)
+    formData.append("zoom", zoom)
+    try {
+      const response = axios({
+        method: "post",
+        url: 'https://d.sve.fvds.ru:445/api/v1/users/update',
+        data: formData,
+        headers: {
+          "Content-Type": "multipart/form-data",
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+        }
+      })
+      localStorage.setItem("token", JSON.stringify(response.data.data.token))
+      getInfo()
+      // console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
   // const id = (localStorage.getItem('id'))
   return (
@@ -447,7 +449,7 @@ export default function Settings() {
                 </div>
 
               </div>
-              <button className=" reset-btn blue-btn submit-btn" onClick={saveProfile}>Создать профиль</button>
+              <button className=" reset-btn blue-btn submit-btn" onClick={() => { saveProfile(name, surname, patronymic, phone, email, WhatsApp, tg, viber, zoom) }}>Создать профиль</button>
 
             </>
 

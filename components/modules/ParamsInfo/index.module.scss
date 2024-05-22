@@ -1,0 +1,85 @@
+.params {
+  margin-bottom: 150px;
+}
+
+
+.box {
+  background-color: #fff;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  border-top: 1px solid #F1F7FF;
+}
+
+.title {
+  font-size: 24px;
+  width: 355px;
+  padding-left: 35px;
+  font-weight: 500;
+  color: #2A344A;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 20px;
+    height: 20px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.item {
+  color: #2A344A;
+  font-size: 16px;
+  background-color: #F1F7FF;
+  padding: 10px 20px;
+  border-radius: 100px;
+}
+
+.line:nth-child(1) {
+  border-top: none;
+}
+
+.line {
+  &:nth-child(1) .title::after {
+    background-image: url(../../../public/img/format.svg);
+  }
+
+  &:nth-child(2) .title::after {
+    background-image: url(../../../public/img/place.svg);
+  }
+
+  &:nth-child(3) .title::after {
+    background-image: url(../../../public/img/type.svg);
+  }
+
+  &:nth-child(4) .title::after {
+    background-image: url(../../../public/img/coast.svg);
+  }
+
+  &:nth-child(5) .title::after {
+    background-image: url(../../../public/img/goal.svg);
+  }
+
+  &:nth-child(6) .title::after {
+    background-image: url(../../../public/img/budjet.svg);
+  }
+}
