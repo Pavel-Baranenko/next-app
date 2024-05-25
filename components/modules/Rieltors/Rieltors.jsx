@@ -16,7 +16,7 @@ export default function Rieltors() {
           </span>
           <div className={styles.grid}>
             <div className={styles.item}>
-              <img src="../img/rieltor1.png" alt="" className={styles.img} />
+              <img src="./img/rieltor1.png" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Ковалёв Алексей</div>
@@ -30,7 +30,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor2.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor2.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Зайцева Василиса</div>
@@ -44,7 +44,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor3.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor3.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Соколов Юрий</div>
@@ -58,7 +58,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor4.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor4.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Яковлева Ангелина</div>
@@ -86,7 +86,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor6.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor6.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Игорь</div>
@@ -100,7 +100,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor7.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor7.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Низовец Борис</div>
@@ -114,7 +114,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor8.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor8.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Морозов Андрей</div>
@@ -128,7 +128,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor9.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor9.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Гринжин Алексей</div>
@@ -142,7 +142,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor10.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor10.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Крупина Светлана</div>
@@ -156,7 +156,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor11.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor11.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Войтов Евгений</div>
@@ -170,7 +170,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor12.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor12.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Полякова Ирина</div>
@@ -184,7 +184,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor13.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor13.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Захарова Дарья</div>
@@ -198,7 +198,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor14.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor14.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Королёва Евгения</div>
@@ -212,7 +212,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor15.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor15.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Макеев Андрей</div>
@@ -226,7 +226,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor16.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor16.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Алексеев Андрей</div>
@@ -240,7 +240,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor17.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor17.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Васильева Анна</div>
@@ -254,7 +254,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor18.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor18.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Беляев Александр</div>
@@ -268,7 +268,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor19.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor19.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Баринов Пётр</div>
@@ -282,7 +282,7 @@ export default function Rieltors() {
               </div>
             </div>
             <div className={styles.item}>
-              <img src="../img/rieltor20.jpg" alt="" className={styles.img} />
+              <img src="./img/rieltor20.jpg" alt="" className={styles.img} />
               <div className={styles.wrap}>
                 <div className={styles.top}>
                   <div className={styles.name}>Ермаков Александр</div>

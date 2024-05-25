@@ -13,7 +13,7 @@ export default function HowItWorks() {
 
           <div className={styles.grid}>
             <div className={styles.column}>
-              <img src="../img/column1.png" alt="" />
+              <img src="./img/column1.png" alt="" />
               <div className={styles.text__content}>
                 <div className={styles.title}>
                   <span className="blue-text">Зарегистрируйтесь</span><br /> и настройте профиль
@@ -23,7 +23,7 @@ export default function HowItWorks() {
 
             </div>
             <div className={styles.column}>
-              <img src="../img/column2.svg" alt="" />
+              <img src="./img/column2.svg" alt="" />
               <div className={styles.text__content}>
                 <div className={styles.title}>
                   <span className="blue-text">Откликнитесь</span><br />  на подходящие заявки
@@ -35,7 +35,7 @@ export default function HowItWorks() {
 
             </div>
             <div className={styles.column}>
-              <img src="../img/column3.svg" alt="" />
+              <img src="./img/column3.svg" alt="" />
               <div className={styles.text__content}>
                 <div className={styles.title}>
                   <span className="blue-text">Получайте контакты</span><br />

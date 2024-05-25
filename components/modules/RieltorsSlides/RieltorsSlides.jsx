@@ -38,7 +38,7 @@ export default function RieltorsSlides() {
               <div className={styles.slide__cart}>
                 <div className={styles.head}>
 
-                  <img src="../img/yes.png" alt="" className={styles.img} />
+                  <img src="./img/yes.png" alt="" className={styles.img} />
 
                   <div className={styles.wrap}>
                     <div className={styles.top}>
@@ -77,7 +77,7 @@ export default function RieltorsSlides() {
               <div className={styles.slide__cart}>
                 <div className={styles.head}>
 
-                  <img src="../img/avatar-1.png" alt="" className={styles.img} />
+                  <img src="./img/avatar-1.png" alt="" className={styles.img} />
 
                   <div className={styles.wrap}>
                     <div className={styles.top}>
@@ -116,7 +116,7 @@ export default function RieltorsSlides() {
               <div className={styles.slide__cart}>
                 <div className={styles.head}>
 
-                  <img src="../img/avatar-2.png" alt="" className={styles.img} />
+                  <img src="./img/avatar-2.png" alt="" className={styles.img} />
 
                   <div className={styles.wrap}>
                     <div className={styles.top}>
@@ -153,7 +153,7 @@ export default function RieltorsSlides() {
               <div className={styles.slide__cart}>
                 <div className={styles.head}>
 
-                  <img src="../img/avatar-3.png" alt="" className={styles.img} />
+                  <img src="./img/avatar-3.png" alt="" className={styles.img} />
 
                   <div className={styles.wrap}>
                     <div className={styles.top}>
@@ -191,7 +191,7 @@ export default function RieltorsSlides() {
               <div className={styles.slide__cart}>
                 <div className={styles.head}>
 
-                  <img src="../img/avatar-4.png" alt="" className={styles.img} />
+                  <img src="./img/avatar-4.png" alt="" className={styles.img} />
 
                   <div className={styles.wrap}>
                     <div className={styles.top}>
@@ -228,7 +228,7 @@ export default function RieltorsSlides() {
               <div className={styles.slide__cart}>
                 <div className={styles.head}>
 
-                  <img src="../img/avatar-5.png" alt="" className={styles.img} />
+                  <img src="./img/avatar-5.png" alt="" className={styles.img} />
 
                   <div className={styles.wrap}>
                     <div className={styles.top}>
