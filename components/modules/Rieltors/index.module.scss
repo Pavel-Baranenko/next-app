@@ -134,9 +134,33 @@
     padding-left: 20px;
     padding-right: 20px;
     grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
   }
 
-  .item:nth-child(21) {
-    grid-column: unset;
+  .item {
+    padding: 10px;
   }
+
+  .grid {
+
+    .item:nth-child(11),
+    .item:nth-child(12),
+    .item:nth-child(13),
+    .item:nth-child(14),
+    .item:nth-child(15),
+    .item:nth-child(16),
+    .item:nth-child(17),
+    .item:nth-child(18),
+    .item:nth-child(19),
+    .item:nth-child(20),
+    .item:nth-child(21) {
+      opacity: 0;
+      height: 0;
+      margin-top: -12px;
+      padding: 0;
+      display: none;
+      grid-column: unset;
+    }
+  }
+
 }

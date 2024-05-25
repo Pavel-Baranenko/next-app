@@ -1,10 +1,11 @@
+"use client"
 import styles from "./index.module.scss"
-
+import React, { useState } from 'react';
 
 
 
 export default function Rieltors() {
-
+  const [more, setMore] = useState(false)
 
   return (
     <>
@@ -14,7 +15,7 @@ export default function Rieltors() {
           <span className="section__subtitle">
             Рейтинг лучших риелторов платформы на май 2024 год
           </span>
-          <div className={styles.grid}>
+          <div className={`${styles.grid} ${more ? "open-grid" : "cloose"}`}>
             <div className={styles.item}>
               <img src="./img/rieltor1.png" alt="" className={styles.img} />
               <div className={styles.wrap}>
@@ -295,11 +296,14 @@ export default function Rieltors() {
                 </div>
               </div>
             </div>
-
             <div className={styles.item}>
               <div className={styles.more}><span>+ 1 289 риелторов</span></div>
             </div>
           </div>
+          {!more && <button className="btn-reset open__more" onClick={() => { setMore(true) }}>
+            <span>Открыть ещё</span>
+            <img src="./img/blue-arrow.svg" alt="" />
+          </button>}
         </div>
       </section>
     </>
