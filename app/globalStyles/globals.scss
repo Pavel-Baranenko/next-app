@@ -2632,6 +2632,7 @@ textarea {
   padding: 12px 20px;
   font-size: 12px;
   font-weight: 600;
+  border-radius: 10px;
   text-transform: uppercase;
 }
 
@@ -2868,4 +2869,12 @@ textarea {
 
     transform: translateX(-50%) translateY(-50%);
   }
+}
+
+.blue-hover:hover {
+  background-color: #3E56D0;
+}
+
+.grey-hover:hover {
+  background-color: #414D65;
 }

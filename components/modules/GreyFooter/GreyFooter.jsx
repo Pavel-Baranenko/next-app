@@ -19,7 +19,7 @@ function GreyFooter() {
                 Пройдите регистрацию и начните получать целевые заявки прямо сейчас!
               </p>
             </div>
-            <Link href='/auth' className={styles.hero__btn}><span>Начать бесплатно</span></Link>
+            <Link href='/auth' className={`${styles.hero__btn} blue-hover`}><span>Начать бесплатно</span></Link>
           </div>
           <div className={styles.middle}>
             <div className={styles.column}>

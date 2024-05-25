@@ -18,7 +18,7 @@ export default function Hero() {
         <span className={styles.hero__subtitle}>
           Пройдите регистрацию и начните работу с целевыми заявки прямо сейчас!
         </span>
-        <Link href='/auth' className={styles.hero__btn}><span>Начать бесплатно</span></Link>
+        <Link href='/auth' className={`${styles.hero__btn} blue-hover`}><span>Начать бесплатно</span></Link>
         <div className={styles.hero__caroucel}>
           <Swiper
             className={styles.Swiper}

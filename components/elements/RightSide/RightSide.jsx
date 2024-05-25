@@ -18,8 +18,8 @@ const RightSide = () => {
       </Link> */}
 
 
-      <Link href="./login" className="login-link">Вход</Link>
-      <Link href="./auth" className="singup-link">регистрация</Link>
+      <Link href="./login" className="login-link grey-hover">Вход</Link>
+      <Link href="./auth" className="singup-link blue-hover">регистрация</Link>
     </div>
   )
 }
