@@ -83,3 +83,44 @@
     background-image: url(../../../public/img/budjet.svg);
   }
 }
+
+@media (max-width: 1080px) {
+  .title {
+    font-size: 24px;
+    width: 220px;
+  }
+
+  .params {
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px;
+    width: auto;
+    gap: 15px;
+  }
+
+  .params {
+    margin-bottom: 80px;
+  }
+
+  .box {
+    padding: 0 20px;
+  }
+
+  .line {
+    flex-wrap: wrap;
+    padding: 20px 0;
+    border-bottom: 1px solid #F1F7FF;
+
+    &:nth-child(6) {
+      border: none;
+    }
+  }
+
+  .item {
+    font-size: 14px;
+  }
+}

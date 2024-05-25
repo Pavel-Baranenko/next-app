@@ -30,3 +30,42 @@
     color: #4E6AF3;
   }
 }
+
+.mob {
+  display: none;
+}
+
+.mob a {
+  color: #4E6AF3;
+}
+
+@media (max-width: 1120px) {
+  .right {
+    display: none;
+  }
+
+  .mob {
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  .questanswer {
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .acc {
+    padding: 0 20px;
+    gap: 10px;
+  }
+
+  .mob {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .questanswer {
+    margin-bottom: 80px;
+  }
+}

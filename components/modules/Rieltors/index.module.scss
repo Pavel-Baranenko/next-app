@@ -109,3 +109,34 @@
   font-weight: 600;
   color: #4E6AF3;
 }
+
+@media (max-width: 1210px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item:nth-child(21) {
+    width: 100%;
+    grid-column: 1 / span 2;
+  }
+
+  .rieltors {
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .rieltors {
+    margin-bottom: 80px;
+  }
+
+  .grid {
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .item:nth-child(21) {
+    grid-column: unset;
+  }
+}

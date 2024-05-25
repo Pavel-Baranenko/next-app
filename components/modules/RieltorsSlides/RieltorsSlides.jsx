@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel } from 'swiper/modules';
+import { Navigation, Mousewheel, Parallax } from 'swiper/modules';
 import 'swiper/css/navigation';
 // import "swiper/swiper.min.css";
 import styles from "./index.module.scss"
@@ -18,11 +18,11 @@ export default function RieltorsSlides() {
     <>
       <section className={styles.wrapper}>
         <div className="container__fluid-left container__fluid">
-          <h4 className={styles.section__title}>С нами зарабатывают сотни риелторов и агентств из разных городов России</h4>
+          <h6 className={styles.section__title}>С нами зарабатывают сотни риелторов и агентств из разных городов России</h6>
 
           <Swiper
             navigation={true}
-            modules={[Navigation, Mousewheel]}
+            modules={[Navigation, Mousewheel, Parallax]}
             className="rieltor-swiper"
             spaceBetween={20}
             slidesPerView={'auto'}

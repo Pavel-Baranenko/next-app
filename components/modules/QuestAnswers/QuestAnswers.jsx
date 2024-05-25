@@ -14,6 +14,9 @@ export default function QuestAnswers() {
       <section className={styles.questanswer}>
         <div className="container__fluid">
           <h4 className="section__title">Вопросы и ответы</h4>
+          <span className={styles.mob}>
+            Если не нашли ответ на свой вопрос, тогда напишите в <a href="./">поддержку</a>
+          </span>
           <div className={styles.box}>
             <div className={styles.acc}>
               {/* <Accordion

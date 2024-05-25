@@ -63,3 +63,9 @@
     background-position: center;
   }
 }
+
+@media (max-width: 768px) {
+  .accordion__header {
+    font-size: 18px;
+  }
+}

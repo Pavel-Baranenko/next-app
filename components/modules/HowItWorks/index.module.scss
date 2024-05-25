@@ -20,3 +20,57 @@
   color: #3B4A69;
   line-height: 1.5;
 }
+
+@media (max-width: 1080px) {
+  .howitworks {
+    padding-bottom: 100px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+  }
+
+  .column {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .text__content {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .howitworks {
+    padding-bottom: 80px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 40px;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .text__content {
+    text-align: center;
+    max-width: 320px;
+  }
+
+  .title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+}

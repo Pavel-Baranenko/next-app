@@ -1,9 +1,13 @@
 .swiper {
   .swiper-slide {
+    opacity: 1;
+    transition: all 0.2s ease-out;
     width: 380px;
   }
 
-
+  .swiper-slide-prev {
+    opacity: 0;
+  }
 }
 
 .slide {
@@ -11,8 +15,11 @@
   min-height: 430px !important;
   padding: 20px;
   background-color: #fff;
+  opacity: 1;
   border-radius: 10px;
 }
+
+
 
 .section__title {
   font-weight: 700;
@@ -125,5 +132,43 @@
 .wrapper {
   margin-bottom: 150px;
 
+  .swiper-slide-prev {
+    opacity: 0;
+  }
+}
 
+@media (max-width: 1080px) {
+  .section__title {
+    font-size: 44px;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+
+  .wrapper {
+    margin-bottom: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section__title {
+    font-size: 26px;
+    white-space: wrap;
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .wrapper {
+    margin-bottom: 80px;
+  }
 }
