@@ -1583,7 +1583,7 @@ textarea {
 
 
 .profile__body {
-  margin-top: 30px;
+  margin-top: 90px;
 }
 
 .profile__body .container:last-child {
@@ -2913,5 +2913,288 @@ textarea {
       display: flex;
     }
 
+  }
+}
+
+
+.mob-menu.cloose {
+  display: none;
+}
+
+@media (max-width:1080px) {
+  .profile__body {
+    margin-top: 70px;
+  }
+
+  .tabs {
+    border-radius: 0 0 10px 10px;
+  }
+
+  .tabs__title {
+    font-size: 26px;
+  }
+
+  .profile__body-contacts {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile__body-top {
+    flex-direction: column;
+  }
+
+  .profile__info {
+    flex-direction: column-reverse;
+    width: auto;
+  }
+
+  .profile-info-wrap {
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  // .profile__info-box {}
+
+  .tabs__btn {
+    white-space: nowrap;
+  }
+
+  .tabs__buttons {
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  .tabs {
+    padding: 0 0 0 0;
+  }
+
+  .tabs__title {
+    padding: 16px 20px;
+    margin-bottom: 0;
+  }
+
+  .tabs__buttons {
+    padding: 0 20px;
+  }
+
+  .tabs__buttons:after {
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+
+  .profile__body-head {
+    padding: 20px;
+  }
+
+  .profile__info-right {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .profile__info-name {
+    font-size: 22px;
+  }
+
+  .profile__info-left {
+    gap: 6px;
+  }
+
+  .profile__info-feeds span {
+    font-size: 20px;
+  }
+
+  .profile__info-feeds .feeds {
+    font-size: 20px;
+  }
+
+  .profile__info-box {
+    padding: 16px 20px;
+    width: fit-content;
+  }
+
+  .about {
+    padding: 20px;
+  }
+
+  .section-head__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+
+  .readmore {
+    padding-right: 0;
+
+    p {
+      -webkit-line-clamp: 9;
+    }
+  }
+
+  .video {
+    &-heading {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .estate-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .estate {
+    padding: 20px;
+
+    &-item {
+      flex-direction: column;
+      padding: 15px 0;
+      gap: 8px;
+    }
+
+    &-item:last-child {
+      padding: 15px 0 0 0;
+    }
+  }
+
+  .estate-item-title {
+    font-size: 14px;
+  }
+
+  .profile-line {
+    margin-left: -20px;
+    width: calc(100% + 40px);
+    font-size: 14px;
+    padding: 5px 20px;
+  }
+
+  .estate-item-list {
+    width: auto;
+  }
+
+  .estate-list__item {
+    font-size: 14px;
+  }
+
+  .license {
+    padding: 20px;
+  }
+
+  .wrap {
+    padding: 20px;
+  }
+
+  .section-head__title.section-heading {
+    margin-bottom: 0;
+  }
+
+  .prifile-option__item.prifile-option__item-mod {
+    flex-wrap: wrap;
+  }
+
+  .profile-opion__choice {
+    order: 10;
+    margin-left: 0;
+    margin-top: 5px;
+  }
+
+  .checkbox-toggle {
+    margin-left: auto;
+  }
+
+  .prifile-option__title {
+    width: 250px;
+  }
+
+  .profile-security {
+    .prifile-option__item.prifile-option__item-mod {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: start;
+    }
+
+    .profile-opion__choice-mod {
+      margin: 10px 0 0 0;
+
+    }
+
+    .checkbox-toggle {
+      margin-left: 0;
+    }
+
+    .prifile-option__title-grey {
+      margin: 0;
+      font-size: 12px;
+    }
+  }
+
+  .delete-profile__title {
+    font-size: 20px;
+  }
+
+  .delete-profile__text {
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding-right: 0;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer {
+    display: none;
+  }
+}
+
+
+.bordered {
+  border-bottom: 1px solid #F1F7FF;
+}
+
+.type-input {
+  input {
+    height: 135px;
+    width: 135px;
+  }
+
+  label {
+    height: 135px;
+    width: 135px;
+    margin-top: -135px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.2s linear;
+
+    svg {
+      pointer-events: none;
+    }
+
+    path {
+      transition: all 0.2s linear;
+      fill: #2A344A;
+    }
+  }
+}
+
+.type-input input:checked+label {
+  path {
+    fill: #fff;
   }
 }

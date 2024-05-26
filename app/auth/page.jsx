@@ -10,7 +10,7 @@ import 'react-phone-number-input/style.css'
 import { registration } from '@/actions/user';
 // import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation'
-
+import inMemoryJWT from '@/actions/inMemoryJWT';
 
 export default function Auth() {
   // const dispatch = useDispatch()

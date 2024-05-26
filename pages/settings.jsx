@@ -10,20 +10,20 @@ import axios from 'axios';
 
 export default function Settings() {
   // const id = ""
-  const getInfo = async () => {
+  // const getInfo = async () => {
 
-    try {
-      const response = await axios.get("https://d.sve.fvds.ru:445/api/v1/users/info", {
-        headers: {
-          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-        },
-      });
-      // id = (JSON.parse(localStorage.getItem('id')))
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  //   try {
+  //     const response = await axios.get("https://d.sve.fvds.ru:445/api/v1/users/info", {
+  //       headers: {
+  //         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+  //       },
+  //     });
+  //     // id = (JSON.parse(localStorage.getItem('id')))
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   // getInfo()
 
   const [phone, setPhone] = useState();

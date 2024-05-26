@@ -42,32 +42,35 @@ export default function ProfileInfo() {
             <Link className='profile-contact zm' href="">Zoom</Link>
           </div>
         </div>
-        <div className="profile__info-box white-box">
-          <div className="profile__info-item">
-            <span>176</span>
-            <p>Отправлено предложений</p>
-          </div>
-          <div className="profile__info-item">
-            <span>19</span>
-            <p>Получено предложений</p>
-          </div>
-          <div className="profile__info-item">
-            <span>45</span>
-            <p>Получено контактов</p>
-          </div>
-          <div className="profile__info-item">
-            <span>16</span>
-            <p>Совершено сделок</p>
-          </div>
-          <div className="profile__info-item">
-            <span>0</span>
-            <p>Создано объектов</p>
-          </div>
-          <div className="profile__info-item">
-            <span>228</span>
-            <p>Просмотров профиля</p>
+        <div className="profile-info-wrap">
+          <div className="profile__info-box white-box">
+            <div className="profile__info-item">
+              <span>176</span>
+              <p>Отправлено предложений</p>
+            </div>
+            <div className="profile__info-item">
+              <span>19</span>
+              <p>Получено предложений</p>
+            </div>
+            <div className="profile__info-item">
+              <span>45</span>
+              <p>Получено контактов</p>
+            </div>
+            <div className="profile__info-item">
+              <span>16</span>
+              <p>Совершено сделок</p>
+            </div>
+            <div className="profile__info-item">
+              <span>0</span>
+              <p>Создано объектов</p>
+            </div>
+            <div className="profile__info-item">
+              <span>228</span>
+              <p>Просмотров профиля</p>
+            </div>
           </div>
         </div>
+
         <div className="about white-box">
           <div className="section-head">
             <h4 className='section-head__title'>О себе</h4>

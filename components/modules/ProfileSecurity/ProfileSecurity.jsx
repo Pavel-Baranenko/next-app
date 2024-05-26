@@ -13,7 +13,7 @@ export default function ProfileSecurity() {
   }
   return (
     <>
-      <div className="container">
+      <div className="container profile-security">
 
 
         <div className="wrap white-box">
