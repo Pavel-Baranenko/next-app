@@ -10,11 +10,10 @@ import 'react-phone-number-input/style.css'
 import { registration } from '@/actions/user';
 // import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from 'next/navigation'
-import inMemoryJWT from '@/actions/inMemoryJWT';
+// import inMemoryJWT from '@/actions/inMemoryJWT';
 
 export default function Auth() {
   // const dispatch = useDispatch()
-
   const [role, setValue] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -53,9 +52,7 @@ export default function Auth() {
   const changePassword = () => {
     setPassword(event.target.value.trim());
   }
-  const submitForm = () => {
-    console.log("Отправлено")
-  }
+
   const verify = role && name && phone && email && pass && phone.length > 10
   const handleShow = () => {
     if (types === true) {
@@ -81,12 +78,12 @@ export default function Auth() {
   }
   const sendCodeUser = async (code) => {
     // console.log(code);
-    // const url = "https://d.sve.fvds.ru:445/api/v1/users/activate"
+    // const url = "https://umnoj.com:445/users/activate"
     // console.log(url);
     // console.log(JSON.parse(localStorage.getItem('token')));
 
     try {
-      const response = await axios.get(`https://d.sve.fvds.ru:445/api/v1/users/activate?code=${code}`, {
+      const response = await axios.get(`https://umnoj.com:445/users/activate?code=${code}`, {
         headers: {
           'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
         },

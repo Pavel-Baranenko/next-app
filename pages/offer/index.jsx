@@ -14,25 +14,81 @@ export default function Offer() {
   const [city, setCity] = useState("");
   const [format, setFormat] = useState("");
   const [type, setType] = useState("");
+  const [subType, setSubType] = useState("");
+  const [year, setYear] = useState("");
+  const [goal, setGoal] = useState("");
+  const [purchase, setPurchase] = useState("");
+  const [mortgage, setMortgage] = useState("");
 
-  const appartment = []
+  const [count, setCount] = useState("");
 
-
-  const [optionscity, setOptionsCity] = useState(["Москва", "Санкт-Петербург"])
   const [selectedCity, setSelectedCity] = useState([])
   const [selectedType, setSelectedType] = useState([])
   const [SelectedParams, setSelectedParams] = useState([])
-  const [selectedCoast, setSelectedCoast] = useState([])
+  const [coast, setCoast] = useState([])
+  const [more, setMore] = useState(false)
+  const [moreSquare, setMoreSquare] = useState(false)
 
   const [about, setAbout] = useState("")
 
+  const apartCoast = [
+    { value: 'cottage', label: "Коттедж" },
+    { value: 'private house', label: "Частный дом" },
+    { value: 'villa', label: "Вилла" },
+    { value: 'duplex', label: "Дуплекс" },
+    { value: 'townhouse', label: "Таунхаус" },
+    { value: 'homestead', label: "Усадьба" },
+    { value: 'mansion', label: "Особняк" },
+    { value: 'manor', label: "Поместье" },
+    { value: 'maisonette', label: "Мезонет" },
+    { value: 'castle', label: "Замок" },
+  ]
+  const landCoast = [
+    { value: 'land plot', label: "Участок земли" },
+    { value: 'island', label: "Остров" },
+    { value: 'vineyard', label: "Виноградник" },
+  ]
+  const comCoast = [
+    { value: 'hotel', label: "Отель" },
+    { value: 'office', label: "Офис" },
+    { value: 'trade', label: "Торговля" },
+    { value: 'storage', label: "Склад" },
+    { value: 'catering', label: "Общепит" },
+    { value: 'manufacture', label: "Производство" },
+    { value: 'free appointment', label: "Свободное назначение" },
+    { value: 'other', label: "Другое" },
+  ]
+  const countRooms = [
+    { value: 'studio', label: "Студия" },
+    { value: '1', label: "1" },
+    { value: '2', label: "2" },
+    { value: '3', label: "3" },
+    { value: '4', label: "4" },
+    { value: '5', label: "5" },
+    { value: '6+', label: "6+" },
+    { value: 'free planning', label: "Свободная планировка" },
+  ]
+  const goals = [
+    { value: 'Для проживания', label: "Для проживания" },
+    { value: 'Сдавать в аренду', label: "Сдавать в аренду" },
+    { value: 'Перепродать', label: "Перепродать" },
+    { value: 'Сохранить деньги', label: "Сохранить деньги" },
+    { value: 'Получить ВНЖ', label: "Получить ВНЖ" },
+  ]
+  const purchaseMethod = [
+    { value: 'В ипотеку', label: "В ипотеку" },
+    { value: 'В рассрочку', label: "В рассрочку" },
+    { value: 'Наличными', label: "Наличными" },
+    { value: 'Сертификатом', label: "Сертификатом" },
+    { value: 'Другой способ', label: "Другой способ" },
+  ]
+  const rooms = ['1', '2', '3', '4', '5', '6+']
 
-
-  const changeAbout = () => {
-    if (about.length < 500) {
-      setAbout(event.target.value)
-    }
-  }
+  const [subRoom, setSubRoom] = useState({
+    'bedroom': "",
+    'sanitary': "",
+    'balcony': ""
+  })
 
 
   return (
@@ -42,9 +98,41 @@ export default function Offer() {
           <div className="settings-top">
             <a href="javascript:history.back()" className="back-link mob-none"></a>
             <h4> <a href="javascript:history.back()" className="back-link mob"></a>Создание заявки для поиска недвижимости</h4>
-            <span className="user-id">ID 83</span>
+            <span className="user-id">ID 16</span>
           </div>
-
+          <div className="offer-top form__inner">
+            <div className="offer-top__item">
+              <img src="./img/step-1.svg" alt="" />
+              <div className="offer-top-info">
+                <span className="offer-top__title">Создайте<br />анонимную заявку</span>
+                <p className="offer-top__text">
+                  Опишите недвижимость, которую вы ищите
+                </p>
+              </div>
+            </div>
+            <div className="offer-top__item">
+              <img src="./img/step-2.svg" alt="" />
+              <div className="offer-top-info">
+                <span className="offer-top__title">
+                  Получайте<br />предложения
+                </span>
+                <p className="offer-top__text">
+                  Риелторы сделают вам свои предложения
+                </p>
+              </div>
+            </div>
+            <div className="offer-top__item">
+              <img src="./img/step-3.svg" alt="" />
+              <div className="offer-top-info">
+                <span className="offer-top__title">
+                  Обменивайтесь контактами
+                </span>
+                <p className="offer-top__text">
+                  Откройте контакты подходящим риелторам
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="form__inner ">
             <div className="form__heading">
               Расположение  <span className='red'>*</span>
@@ -129,7 +217,6 @@ export default function Offer() {
                   </label>
 
                 </div>
-
                 <div className="input__box type-input">
                   <input type="checkbox" name="radio-client" value="home"
                     checked={type == 'home' ? true : false}
@@ -260,101 +347,434 @@ export default function Offer() {
 
                 </div>
               </div>
-              <div className="form-body__bottom"></div>
+              {type.length > 0 &&
+                <div className="sub__form-inner">
+                  <div className="sub__form__title">
+                    Подтип  <span className='red'>*</span>
+                  </div>
+                  {(type == 'apartment') &&
+                    <div className="form__radio-buttons">
+                      <div className="input__box">
+                        <input type="checkbox" name="radio-client" value="flat"
+                          checked={subType == 'flat' ? true : false}
+                          onChange={(e) => { setSubType(e.target.value) }} />
+                        <label htmlFor='radio-client'>Квартира</label>
+                      </div>
+                      <div className="input__box">
+                        <input type="checkbox" name="radio-client" value="apartments"
+                          checked={subType == 'apartments' ? true : false}
+                          onChange={(e) => { setSubType(e.target.value) }} />
+                        <label htmlFor='radio-client'>Апартаменты</label>
+                      </div>
+                      <div className="input__box">
+                        <input type="checkbox" name="radio-client" value="penthouse"
+                          checked={subType == 'penthouse' ? true : false}
+                          onChange={(e) => { setSubType(e.target.value) }} />
+                        <label htmlFor='radio-client'>Пентхаус</label>
+                      </div>
+                      <div className="input__box">
+                        <input type="checkbox" name="radio-client" value="loft"
+                          checked={subType == 'loft' ? true : false}
+                          onChange={(e) => { setSubType(e.target.value) }} />
+                        <label htmlFor='radio-client'>Лофт</label>
+                      </div>
+
+
+                    </div>
+                  }
+                  {(type == 'home') &&
+                    <div className="form__radio-buttons">
+                      {apartCoast.map((obj, index) => {
+                        return (
+                          <div className="input__box">
+                            <input type="checkbox" name="radio-client" value={obj.value}
+                              checked={subType == obj.value ? true : false}
+                              onChange={(e) => { setSubType(e.target.value) }} />
+                            <label htmlFor='radio-client'>{obj.label}</label>
+                          </div>
+                        )
+                      })}
+
+
+
+
+                    </div>
+                  }
+                  {(type == 'land') &&
+                    <div className="form__radio-buttons">
+                      {landCoast.map((obj, index) => {
+                        return (
+                          <div className="input__box">
+                            <input type="checkbox" name="radio-client" value={obj.value}
+                              checked={subType == obj.value ? true : false}
+                              onChange={(e) => { setSubType(e.target.value) }} />
+                            <label htmlFor='radio-client'>{obj.label}</label>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  }
+                  {(type == 'commercial') &&
+                    <div className="form__radio-buttons">
+                      {comCoast.map((obj, index) => {
+                        return (
+                          <div className="input__box">
+                            <input type="checkbox" name="radio-client" value={obj.value}
+                              checked={subType == obj.value ? true : false}
+                              onChange={(e) => { setSubType(e.target.value) }} />
+                            <label htmlFor='radio-client'>{obj.label}</label>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  }
+                </div>
+              }
             </div>
 
           </div>
           <div className="form__inner ">
-            <div className="form__heading">
-              Параметры недвижимости <span className='red'>*</span>
+            <div className="form__heading bordered">
+              Состояние <span className='red'>*</span>
             </div>
-            <div className="form__line">
-              Укажите параметры недвижимости, которой сейчас занимаетесь. Система будет информировать вас о поступлении заявок с аналогичными данными
-            </div>
+
             <div className="form__body">
-              <div className={`milti-select-inner ${selectedCity.length == 0 ? "" : "milti-select-inner-float"}`}>
-                <p className="multi-select-heading">Город <span className='red'>*</span></p>
-                <Multiselect
-                  // customArrow
-                  placeholder=''
-                  isObject={false}
-                  // showArrow={true}
-                  // options={["Москва", "Санкт-Петербург"]}
-                  selectedValues={selectedCity}
-                  options={optionscity}
-                  showCheckbox={true}
-                  onSelect={(event) => { setSelectedCity(event) }}
-                  onRemove={(event) => { setSelectedCity(event) }}
-                />
+              <div className="form__radio-buttons">
+                <div className="input__box">
+                  <input type="checkbox" name="radio-client" value="new"
+                    checked={coast == 'new' ? true : false}
+                    onChange={(e) => { setCoast(e.target.value) }} />
+                  <label htmlFor='radio-client'>Новая</label>
+                </div>
+                <div className="input__box">
+                  <input type="checkbox" name="radio-client" value="recycling"
+                    checked={coast == 'recycling' ? true : false}
+                    onChange={(e) => { setCoast(e.target.value) }} />
+                  <label htmlFor='radio-client'>Вторичная</label>
+                </div>
+                <div className="input__box">
+                  <input type="checkbox" name="radio-client" value="no matter"
+                    checked={coast == 'no matter' ? true : false}
+                    onChange={(e) => { setCoast(e.target.value) }} />
+                  <label htmlFor='radio-client'>Неважно</label>
+                </div>
+
+
+              </div>
+              <div className="sub__form-inner">
+                <div className="sub__form__title">
+                  Год постройки
+                </div>
+                <div className="select__val-grid">
+                  <div className="milti-select-inner select-val" >
+                    <Select options={[
+                      { value: '2024', label: '2024' },
+                      { value: '2025', label: '2025' },
+                      { value: '2026', label: '2026' },
+                      { value: '2027', label: '2027' },
+                    ]} placeholder="Год" />
+
+                  </div>
+                  <div className="milti-select-inner select-val" >
+                    <Select options={[
+                      { value: '1', label: 'I квартал' },
+                      { value: '2', label: 'II квартал' },
+                      { value: '3', label: 'III квартал' },
+                      { value: '4', label: 'IV квартал' },
+                    ]} placeholder="Квартал" />
+
+                  </div>
+                </div>
               </div>
 
-              <div className={`milti-select-inner ${selectedType.length == 0 ? "" : "milti-select-inner-float"}`}>
-                <p className="multi-select-heading">Формат сделки <span className='red'>*</span></p>
-                <Multiselect
-                  placeholder=''
-                  isObject={false}
-                  selectedValues={selectedType}
 
-                  options={["Продажа", "Аренда"]}
-                  showCheckbox={true}
-                  onSelect={(event) => { setSelectedType(event) }}
-                  onRemove={(event) => { setSelectedType(event) }}
-                />
+
+
+
+            </div>
+
+          </div>
+
+          <div className="form__inner ">
+            <div className="form__heading bordered">
+              Всего комнат  <span className='red'>*</span>
+            </div>
+
+            <div className="form__body">
+              <div className="form__radio-buttons">
+                {countRooms.map((obj, index) => {
+                  return (
+                    <div className="input__box">
+                      <input type="checkbox" name="radio-client" value={obj.value}
+                        checked={count == obj.value ? true : false}
+                        // onChange={(e) => { setCount(e.target.value) }} />
+                        onChange={(e) => { setCount(e.target.value) }} />
+                      <label htmlFor='radio-client'>{obj.label}</label>
+                    </div>
+                  )
+                })}
               </div>
-
-
-              <div className={`milti-select-inner  ${SelectedParams.length == 0 ? "" : "milti-select-inner-float"}`}>
-                <p className="multi-select-heading">Тип недвижимости <span className='red'>*</span></p>
-                <Multiselect
-                  placeholder=''
-                  isObject={false}
-                  selectedValues={SelectedParams}
-                  options={["Квартира", "Апартаменты", "Пентхаус", "Лофт", "Коттедж", "Частный дом", "Вилла", "Дуплекс", "Таунхаус", "Усадьба", "Особняк", "Поместье", "Мезонет", "Замок", "Участок земли", "Остров", "Виноградник", "Отель", "Офис", "Торговля", "Склад", "Общепит", "Производство", "Свободное назначение", "Другое"]}
-                  showCheckbox={true}
-                  onSelect={(event) => { setSelectedParams(event) }}
-                  onRemove={(event) => { setSelectedParams(event) }}
-                />
-              </div>
-              {!(SelectedParams.length == 1 && SelectedParams[0] == "Участок земли") &&
-                <div className={`milti-select-inner  ${selectedCoast.length == 0 ? "" : "milti-select-inner-float"}`}>
-                  <p className="multi-select-heading">Состояние недвижимости <span className='red'>*</span></p>
-                  <Multiselect
-                    placeholder=''
-                    isObject={false}
-                    selectedValues={selectedCoast}
-
-                    options={["Новая", "Вторичная"]}
-                    showCheckbox={true}
-                    onSelect={(event) => { setSelectedCoast(event) }}
-                    onRemove={(event) => { setSelectedCoast(event) }}
-                  />
+              {more &&
+                <div className="open__more-descr">
+                  <div className="sub__form-inner">
+                    <div className="sub__form__title">
+                      Спальня
+                    </div>
+                    <div className="form__radio-buttons">
+                      {rooms.map((item, index) => {
+                        return (
+                          <div className="input__box">
+                            <input type="checkbox" name="radio-client" value={item}
+                              checked={subRoom.bedroom == item ? true : false}
+                              // onChange={(e) => { edit(bedroom, e) }} />
+                              onChange={e => setSubRoom({ ...subRoom, ...{ bedroom: e.target.value } })} />
+                            <label htmlFor='radio-client'>{item}</label>
+                          </div>
+                        )
+                      })}
+                    </div>
+                    <div className="sub__form__title">
+                      Санузел
+                    </div>
+                    <div className="form__radio-buttons">
+                      {rooms.map((item, index) => {
+                        return (
+                          <div className="input__box">
+                            <input type="checkbox" name="radio-client" value={item}
+                              checked={subRoom.sanitary == item ? true : false}
+                              onChange={e => setSubRoom({ ...subRoom, ...{ sanitary: e.target.value } })} />
+                            <label htmlFor='radio-client'>{item}</label>
+                          </div>
+                        )
+                      })}
+                    </div>
+                    <div className="sub__form__title">
+                      Балкон
+                    </div>
+                    <div className="form__radio-buttons">
+                      {rooms.map((item, index) => {
+                        return (
+                          <div className="input__box">
+                            <input type="checkbox" name="radio-client" value={item}
+                              checked={subRoom.balcony == item ? true : false}
+                              onChange={e => setSubRoom({ ...subRoom, ...{ balcony: e.target.value } })} />
+                            <label htmlFor='radio-client'>{item}</label>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
                 </div>
               }
 
 
+              <button className={more ? "btn-reset open-more-btn down" : "btn-reset open-more-btn"} onClick={() => setMore(!more)}>{more ? "Скрыть" : "Открыть ещё"}</button>
+
+
+
+
             </div>
 
           </div>
+          <div className="form__inner ">
+            <div className="form__heading bordered">
+              площадь  <span className='red'>*</span>
+            </div>
+
+            <div className="form__body">
+              <div className="square-input__box">
+                <div className="square-input__inner">
+                  <input type="number" className="square-input" />
+                  <span>м<sup>2</sup></span>
 
 
+                </div>
+                <div className="square-input__inner">
+                  <input type="number" className="square-input" />
+                  <span>м<sup>2</sup></span>
+
+                </div>
+
+              </div>
+              {moreSquare &&
+                <div className="open__more-descr">
+                  <div className="sub__form-inner">
+                    <div className="sub__form__title">
+                      Жилая площадь
+                    </div>
+                    <div className="square-input__box">
+                      <div className="square-input__inner">
+                        <input type="number" className="square-input" />
+                        <span>м<sup>2</sup></span>
+
+                      </div>
+                      <div className="square-input__inner">
+                        <input type="number" className="square-input" />
+                        <span>м<sup>2</sup></span>
+
+                      </div>
+
+                    </div>
+                    <div className="sub__form__title">
+                      Площадь кухни
+                    </div>
+                    <div className="square-input__box">
+                      <div className="square-input__inner">
+                        <input type="number" className="square-input" />
+                        <span>м<sup>2</sup></span>
+
+                      </div>
+                      <div className="square-input__inner">
+                        <input type="number" className="square-input" />
+                        <span>м<sup>2</sup></span>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              }
+
+
+              <button className={moreSquare ? "btn-reset open-more-btn down" : "btn-reset open-more-btn"} onClick={() => setMoreSquare(!moreSquare)}>{moreSquare ? "Скрыть" : "Открыть ещё"}</button>
+
+
+
+
+            </div>
+
+          </div>
+          <div className="form__inner ">
+            <div className="form__heading bordered">
+              Ваш бюджет   <span className='red'>*</span>
+            </div>
+
+            <div className="form__body">
+              <div className="square-input__box">
+                <div className="square-input__inner">
+                  <input type="number" className="square-input" />
+
+
+                </div>
+                <div className="square-input__inner">
+                  <input type="number" className="square-input" />
+
+                </div>
+                <Select options={[
+                  { value: 'pub', label: 'Рублей — ₽' },
+                  { value: 'usd', label: 'Долларов — $' },
+                  { value: 'eur', label: 'Евро — €' },
+                  { value: 'funt', label: 'Фунтов — £' },
+                ]} placeholder="Рублей — ₽" />
+              </div>
+
+
+
+
+            </div>
+
+          </div>
           <div className="form__inner ">
             <div className="form__heading">
-              О себе
+              Цель покупки   <span className='red'>*</span>
             </div>
             <div className="form__line">
-              Напишите о себе и преимуществах работы с вами
+              Укажите самое подходящее назначение для этой недвижимости
             </div>
+            <div className="form__body form__body-box">
+              <div className="form__radio-buttons">
+                {goals.map((obj, index) => {
+                  return (
+                    <div className="input__box">
+                      <input type="checkbox" name="radio-client" value={obj.value}
+                        checked={goal == obj.value ? true : false}
+                        onChange={() => { setGoal(obj.value) }} />
+                      <label htmlFor='radio-client'>{obj.label}</label>
+
+                    </div>
+                  )
+                })}
+
+
+              </div>
+            </div>
+
+          </div>
+          <div className="form__inner ">
+            <div className="form__heading bordered">
+              Способ покупки
+            </div>
+
+            <div className="form__body">
+              <div className="form__radio-buttons">
+                {purchaseMethod.map((obj, index) => {
+                  return (
+                    <div className="input__box">
+                      <input type="checkbox" name="radio-client" value={obj.value}
+                        checked={purchase == obj.value ? true : false}
+                        onChange={() => { setPurchase(obj.value) }} />
+                      <label htmlFor='radio-client'>{obj.label}</label>
+                    </div>
+                  )
+                })}
+
+
+              </div>
+              {purchase == purchaseMethod[0].value &&
+                <div className="sub__form-inner">
+                  <div className="sub__form__title">
+                    Ипотека уже одобрена?
+                  </div>
+
+                  <div className="form__radio-buttons">
+                    <div className="input__box">
+                      <input type="checkbox" name="radio-client" value="yes"
+                        checked={mortgage == 'yes' ? true : false}
+                        onChange={(e) => { setMortgage(e.target.value) }} />
+                      <label htmlFor='radio-client'>Да</label>
+                    </div>
+                    <div className="input__box">
+                      <input type="checkbox" name="radio-client" value="no"
+                        checked={mortgage == 'no' ? true : false}
+                        onChange={(e) => { setMortgage(e.target.value) }} />
+                      <label htmlFor='radio-client'>Нет</label>
+                    </div>
+                    <div className="input__box">
+                      <input type="checkbox" name="radio-client" value="in process"
+                        checked={mortgage == 'in process' ? true : false}
+                        onChange={(e) => { setMortgage(e.target.value) }} />
+                      <label htmlFor='radio-client'>В процессе</label>
+                    </div>
+
+
+
+                  </div>
+
+
+                </div>
+              }
+
+            </div>
+
+          </div>
+          <div className="form__inner ">
+            <div className="form__heading bordered">
+              Остались пожелания?
+            </div>
+
             <div className="form__body">
               <div className="textarea-box">
 
-                <textarea onChange={changeAbout} value={about} placeholder='О себе' />
+                <textarea onChange={e => setAbout(e.target.value)} value={about}
+                  placeholder='Опишите дополнительные пожелания' />
 
               </div>
 
             </div>
 
           </div>
-          <button className=" reset-btn blue-btn submit-btn" >Создать профиль</button>
+          <button className=" reset-btn blue-btn submit-btn" >Опубликовать заявку</button>
 
 
 

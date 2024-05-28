@@ -88,14 +88,14 @@
     background-color: #fff;
     grid-template-columns: repeat(1, 1fr);
     background-color: transparent;
-    padding: 0 20px 20px 20px;
+    padding: 0;
     gap: 12px;
   }
 
   .column {
     // padding-right: 20px;
     border-bottom: 1px solid #E1EDFD;
-    padding: 20px 0;
+    padding: 20px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -109,6 +109,7 @@
 
   .title {
     font-size: 26px;
+    margin-bottom: 0;
   }
 
   .text {

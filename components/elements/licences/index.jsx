@@ -94,7 +94,7 @@ const Licence = () => {
             </label>
           </div>
           }
-          <div className="custom-file-preview">
+          <div className="custom-file-preview custom-file-preview-2">
             {photosSecond.length > 0 && photosSecond.map((item, index) => (
               <div className="prev-img" key={index} data-imgindex={index}>
                 <span onClick={handleDeleteImgSecond}></span>

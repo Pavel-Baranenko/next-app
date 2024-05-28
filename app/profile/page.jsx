@@ -13,19 +13,19 @@ import { useState } from 'react';
 
 export const getInfo = async () => {
 
-  try {
-    const response = await axios({
-      method: "get",
-      url: "https://d.sve.fvds.ru:445/api/v1/s/info",
-      headers: {
-        'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-      },
-    })
-    // console.log("профиль");
+  // try {
+  //   const response = await axios({
+  //     method: "get",
+  //     url: "https://umnoj.com:445/s/info",
+  //     headers: {
+  //       'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
+  //     },
+  //   })
+  //   // console.log("профиль");
 
-  } catch (error) {
-    console.log(error);
-  }
+  // } catch (error) {
+  //   console.log(error);
+  // }
 }
 
 

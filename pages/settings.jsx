@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Select from 'react-select'
 import 'react-phone-number-input/style.css'
 import Multiselect from 'multiselect-react-dropdown';
@@ -9,23 +9,15 @@ import Licence from '@/components/elements/licences';
 import axios from 'axios';
 
 export default function Settings() {
-  // const id = ""
-  // const getInfo = async () => {
 
-  //   try {
-  //     const response = await axios.get("https://d.sve.fvds.ru:445/api/v1/users/info", {
-  //       headers: {
-  //         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
-  //       },
-  //     });
-  //     // id = (JSON.parse(localStorage.getItem('id')))
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  // getInfo()
+  const [stage, setStage] = useState(1);
+  const [sex, setSex] = useState();
+  const [propCity, setPropCity] = useState();
 
+  const options = [
+    { value: 'man', label: 'Мужской' },
+    { value: 'woman', label: 'Женский' }
+  ]
   const [phone, setPhone] = useState();
   const [email, setEmail] = useState();
   const [WhatsApp, setWhatsApp] = useState();
@@ -36,7 +28,6 @@ export default function Settings() {
   const [surname, setSurname] = useState();
   const [patronymic, setPatronymic] = useState();
 
-  const [optionscity, setOptionsCity] = useState(["Москва", "Санкт-Петербург"])
   const [selectedCity, setSelectedCity] = useState([])
   const [selectedType, setSelectedType] = useState([])
   const [SelectedParams, setSelectedParams] = useState([])
@@ -44,41 +35,63 @@ export default function Settings() {
 
   const [about, setAbout] = useState("")
 
-  const [videos, setVideos] = useState({
-    titles: [],
-    videoslink: []
-  });
-  // const { titles, videoslink } = videosmes
 
-  const addVideo = () => {
-    // setVideos(
-    //   ...videosmes,
-    //   videoslink: [...videoslink....photos.slice(targetindex + 1)]
-    // )
-    console.log("aaa");
+  const [videos, setVideos] = useState([]);
+
+
+  const deleteVideo = (index) => {
+    setVideos(videos.splice(index - 1, index));
   }
-  const changeAbout = () => {
-    if (about.length < 500) {
-      setAbout(event.target.value)
-    }
+
+  const changeVideoInfo = (index, e) => {
+    setVideos(videos.map((item, i) => {
+      if (i == index) {
+        return { ...item, [e.target.name]: e.target.value };
+      } else {
+        return item;
+      }
+
+    }))
   }
+
+  const videores = videos.map((obj, index) => {
+    if (videos.length > 0)
+      return (
+        <div className="video-input-box ">
+          <div className={(obj.title.length > 0) ?
+            "video-input-box__item float" :
+            "video-input-box__item"}>
+            <label htmlFor="title">Название видео</label>
+            <input type="text" name='title' value={obj.title} onChange={(e) => changeVideoInfo(index, e)} />
+          </div>
+          <div className={(obj.link.length > 0) ?
+            "video-input-box__item float" :
+            "video-input-box__item"}>
+            <label htmlFor="link">Ссылка на видео</label>
+            <input type="text" name='link' value={obj.link} onChange={(e) => changeVideoInfo(index, e)} />
+          </div>
+          <button className="delete__video btn-reset" onClick={() => { deleteVideo(index) }}>
+            <img src="./img/delete-video.svg" alt="" />
+          </button>
+        </div>
+      )
+  })
+
 
 
   const [images, setImages] = useState({
-    // title: "",
-    // descr: "",
     size: 0,
     photos: []
   });
 
   const { title, descr, photos } = images
-  // const avatar = photos[0]
-  const handleImg = (e) => {
-    setImages({
-      ...images,
-      [e.target.name]: e.target.value
-    })
-  }
+
+  // const handleImg = (e) => {
+  //   setImages({
+  //     ...images,
+  //     [e.target.name]: e.target.value
+  //   })
+  // }
 
   const [hightlight, setHightlight] = useState(false)
 
@@ -136,20 +149,6 @@ export default function Settings() {
     console.log(files);
   }
 
-  const changePhone = () => {
-    setPhone(event.target.value)
-  }
-
-  const changeName = () => {
-    setName(event.target.value.trim());
-  }
-  const changeSurname = () => {
-    setSurname(event.target.value.trim());
-  }
-  const changePatronymic = () => {
-    setPatronymic(event.target.value.trim());
-  }
-
   const saveProfile = (name, surname, patronymic, phone, email, WhatsApp, tg, viber, zoom) => {
     const formData = new FormData();
     // formData.append("avatar", photos[0])
@@ -165,7 +164,7 @@ export default function Settings() {
     try {
       const response = axios({
         method: "post",
-        url: 'https://d.sve.fvds.ru:445/api/v1/users/update',
+        url: 'https://umnoj.com:445/users/update',
         data: formData,
         headers: {
           "Content-Type": "multipart/form-data",
@@ -179,7 +178,29 @@ export default function Settings() {
       console.log(error);
     }
   }
-  // const id = (localStorage.getItem('id'))
+  const firstStage = stage == 1 && photos.length > 0
+
+  const secondStage = stage == 2 && (name && surname && sex && propCity)
+  const thirdStage = stage == 3 && (phone && email)
+  const fourthStage = stage == 4 && (selectedCity.length > 0 && selectedType.length > 0 &&
+    SelectedParams.length > 0 && (selectedCoast.length > 0 || SelectedParams[0] == "Участок земли"))
+
+  const changeStage = () => {
+    if (firstStage) {
+      setStage(2)
+    }
+    if (secondStage) {
+      console.log(sex);
+      setStage(3)
+    }
+    if (thirdStage) {
+      setStage(4)
+    }
+    if (fourthStage) {
+      setStage(5)
+    }
+  }
+
   return (
     <main>
       <div className="container">
@@ -187,7 +208,7 @@ export default function Settings() {
           <div className="settings-top">
             <a href="javascript:history.back()" className="back-link mob-none"></a>
             <h4> <a href="javascript:history.back()" className="back-link mob"></a>Настройте ваш профиль риелтора</h4>
-            <span className="user-id">ID 83</span>
+            <span className="user-id">ID 91</span>
           </div>
           <div className="form__inner ">
             <div className="form__heading">
@@ -197,13 +218,12 @@ export default function Settings() {
               Загрузите минимум одно фото для профиля. Вес до 10 мб. Оптимальное разрешение 600 x 600px. Доступный формат jpg / png
             </div>
             <div className="form__body">
-              {/* <div className="file-input"></div> */}
               <div className="file-upload">
                 <form className="" encType="multipart /form-data">
 
                   <div className={hightlight ? "custom-form-group file-blue" : "custom-form-group"}>
                     {photos.length == 0 && <div className="custom-file-drop-area ">
-                      <input type="file" name="photos" placeholder="Enter photos" multiple="true" id="filephotos"
+                      <input type="file" name="photos" placeholder="Enter photos" multiple={true} id="filephotos"
                         onChange={handleFileChange}
                         onDragEnter={handlehightlight}
                         onDragOver={handlehightlight}
@@ -249,84 +269,92 @@ export default function Settings() {
             </div>
 
           </div>
-          {photos.length > 0 && <div className="form__inner ">
-            <div className="form__heading">
-              Личные данные  <span className='red'>*</span>
-            </div>
-            <div className="form__line">
-              Ваши личные данные будут доступны всем пользователям платформы
-            </div>
-            <div className="form__body form__body-box">
-              <div className="form-grid-optional">
-                <div className={`input__inner ${name ? "float-input" : ""}`}>
-                  <label htmlFor="">Имя <span className='red'>*</span></label>
-                  <input type="text" onChange={changeName} value={name} />
+          {(stage > 1) &&
+            <div className="form__inner ">
+              <div className="form__heading">
+                Личные данные  <span className='red'>*</span>
+              </div>
+              <div className="form__line">
+                Ваши личные данные будут доступны всем пользователям платформы
+              </div>
+              <div className="form__body form__body-box">
+                <div className="form-grid-optional">
+                  <div className={`input__inner ${name ? "float-input" : ""}`}>
+                    <label htmlFor="">Имя <span className='red'>*</span></label>
+                    <input type="text" onChange={e => { setName(e.target.value.trim()) }} value={name} />
+                  </div>
+                  <div className={`input__inner ${surname ? "float-input" : ""}`}>
+                    <label htmlFor="">Фамилия<span className='red'>*</span></label>
+                    <input type="text"
+                      onChange={e => { setSurname(e.target.value.trim()) }}
+                      value={surname} />
+                  </div>
+                  <div className={`input__inner ${patronymic ? "float-input" : ""}`}>
+                    <label htmlFor="">Отчество</label>
+                    <input type="text" onChange={e => { setPatronymic(e.target.value.trim()) }} value={patronymic} />
+                  </div>
+                  <Select options={options} placeholder="Пол" className='optionalRed'
+                    // onChange={(e) => { setSex(e.target.value), console.log("value"); }}
+                    onChange={setSex}
+                  />
                 </div>
-                <div className={`input__inner ${surname ? "float-input" : ""}`}>
-                  <label htmlFor="">Фамилия<span className='red'>*</span></label>
-                  <input type="text" onChange={changeSurname} value={surname} />
-                </div>
-                <div className={`input__inner ${patronymic ? "float-input" : ""}`}>
-                  <label htmlFor="">Отчество</label>
-                  <input type="text" onChange={changePatronymic} value={patronymic} />
-                </div>
+                {/* isMulti */}
                 <Select options={[
-                  { value: 'man', label: 'Мужской' },
-                  { value: 'woman', label: 'Женский' }
-                ]} placeholder="Пол" className='optionalRed' />
+                  { value: 'Moskow', label: 'Москва' },
+                  { value: 'Spb', label: 'Санкт-Петербург' }
+                ]} placeholder="Город" className='optionalRed' onChange={setPropCity} />
               </div>
-              {/* isMulti */}
-              <Select options={[
-                { value: 'Moskow', label: 'Москва' },
-                { value: 'Spb', label: 'Санкт-Петербург' }
-              ]} placeholder="Город" className='optionalRed' />
-            </div>
 
-          </div>}
-          {(surname && name) && <div className="form__inner ">
-            <div className="form__heading">
-              Контакты <span className='red'>*</span>
             </div>
-            <div className="form__line">
-              Все данные, кроме эл. почты видны пользователям, которые откроют вам свои контакты
-            </div>
-            <div className="form__body">
-              <div className="form-grid-optional">
-                <div className={`input__inner ${phone ? "float-input" : ""}`}>
-                  <label htmlFor="">Телефон <span className='red'>*</span></label>
-                  <input type="number" onChange={changePhone} value={phone} />
-                </div>
-                <div className={`input__inner ${email ? "float-input" : ""}`}>
-                  <label htmlFor="">Эл. почта<span className='red'>*</span></label>
-                  <input type="mail" onChange={(event) => { setEmail(event.target.value) }} value={email} />
-                </div>
-
+          }
+          {(stage > 2) &&
+            <div className="form__inner ">
+              <div className="form__heading">
+                Контакты <span className='red'>*</span>
               </div>
-              <div className="form-grid-optional-title">Мессенджеры</div>
-
-              <div className="form-grid-optional">
-                <div className={`input__inner ${WhatsApp ? "float-input" : ""}`}>
-                  <label htmlFor="">WhatsApp</label>
-                  <input type="text" onChange={(e) => { setWhatsApp(e.target.value) }} value={WhatsApp} />
-                </div>
-                <div className={`input__inner ${tg ? "float-input" : ""}`}>
-                  <label htmlFor="">Telegram</label>
-                  <input type="text" onChange={(e) => { setTg(e.target.value) }} value={tg} />
-                </div>
-                <div className={`input__inner ${viber ? "float-input" : ""}`}>
-                  <label htmlFor="">Viber</label>
-                  <input type="text" onChange={(e) => { setViber(e.target.value) }} value={viber} />
-                </div>
-                <div className={`input__inner ${zoom ? "float-input" : ""}`}>
-                  <label htmlFor="">Zoom</label>
-                  <input type="text" onChange={(e) => { setZoom(e.target.value) }} value={zoom} />
-                </div>
-
+              <div className="form__line">
+                Все данные, кроме эл. почты видны пользователям, которые откроют вам свои контакты
               </div>
-            </div>
+              <div className="form__body">
+                <div className="form-grid-optional">
+                  <div className={`input__inner ${phone ? "float-input" : ""}`}>
+                    <label htmlFor="">Телефон <span className='red'>*</span></label>
+                    <input type="number" onChange={e => { setPhone(e.target.value) }} value={phone} />
+                  </div>
+                  <div className={`input__inner ${email ? "float-input" : ""}`}>
+                    <label htmlFor="">Эл. почта<span className='red'>*</span></label>
+                    <input type="email" onChange={(event) => { setEmail(event.target.value) }} value={email} />
+                  </div>
 
-          </div>}
-          {(email && phone) &&
+                </div>
+                <div className="form-grid-optional-title">Мессенджеры</div>
+
+                <div className="form-grid-optional">
+                  <div className={`input__inner ${WhatsApp ? "float-input" : ""}`}>
+                    <label htmlFor="">WhatsApp</label>
+                    <input type="text" onChange={(e) => { setWhatsApp(e.target.value) }} value={WhatsApp} />
+                  </div>
+                  <div className={`input__inner ${tg ? "float-input" : ""}`}>
+                    <label htmlFor="">Telegram</label>
+                    <input type="text" onChange={(e) => { setTg(e.target.value) }} value={tg} />
+                  </div>
+                  <div className={`input__inner ${viber ? "float-input" : ""}`}>
+                    <label htmlFor="">Viber</label>
+                    <input type="text" onChange={(e) => { setViber(e.target.value) }} value={viber} />
+                  </div>
+                  <div className={`input__inner ${zoom ? "float-input" : ""}`}>
+                    <label htmlFor="">Zoom</label>
+                    <input type="text" onChange={(e) => { setZoom(e.target.value) }} value={zoom} />
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          }
+
+
+          {(stage > 3) &&
             <>
               <div className="form__inner ">
                 <div className="form__heading">
@@ -339,13 +367,10 @@ export default function Settings() {
                   <div className={`milti-select-inner ${selectedCity.length == 0 ? "" : "milti-select-inner-float"}`}>
                     <p className="multi-select-heading">Город <span className='red'>*</span></p>
                     <Multiselect
-                      // customArrow
                       placeholder=''
                       isObject={false}
-                      // showArrow={true}
-                      // options={["Москва", "Санкт-Петербург"]}
                       selectedValues={selectedCity}
-                      options={optionscity}
+                      options={["Москва", "Санкт-Петербург"]}
                       showCheckbox={true}
                       onSelect={(event) => { setSelectedCity(event) }}
                       onRemove={(event) => { setSelectedCity(event) }}
@@ -358,7 +383,6 @@ export default function Settings() {
                       placeholder=''
                       isObject={false}
                       selectedValues={selectedType}
-
                       options={["Продажа", "Аренда"]}
                       showCheckbox={true}
                       onSelect={(event) => { setSelectedType(event) }}
@@ -404,10 +428,7 @@ export default function Settings() {
                 <div className="form__heading">
                   Лицензии и сертификаты
                 </div>
-
                 <div className="form__body">
-
-
                   <Licence />
                 </div>
 
@@ -424,46 +445,36 @@ export default function Settings() {
                     <div className="text-counter">
                       {about.length}/500
                     </div>
-                    <textarea onChange={changeAbout} value={about} placeholder='О себе' />
+                    <textarea onChange={e => { setAbout(e.target.value) }} value={about} placeholder='О себе' maxlength='500' />
 
                   </div>
                   <div className="add-video">
 
 
-                    <div className="video__box">
-                      {videos.videoslink.length > 0 && videos.videoslink.map((item, index) => (
-                        <div className="prev-img" key={index} data-videoindex={index}>
-                          <div className="input-video-title__box">
-                            <label htmlFor="title">Название видео</label>
-                            <input type="text" name='title' value={videos.titles[index]} />
-                          </div>
-                          <div className="input-video__box">
-                            <label htmlFor="video">Ссылка на видео</label>
-                            <input type="text" name='video' value={videos.videoslink[index]} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                    <button className="add-video-block reset-btn"><span>Добавить видео</span><img src="./img/plus-video.svg" alt="" onClick={addVideo} /></button>
+                    {videos.length > 0 &&
+                      <div className="video__box">
+
+                        {videores}
+
+                      </div>}
+                    <button className="add-video-block reset-btn" onClick={() => { setVideos([...videos, { title: "", link: "" }]) }} >
+                      <span>Добавить видео</span>
+                      <img src="./img/plus-video.svg" alt="" />
+                    </button>
                   </div>
                 </div>
 
               </div>
-              <button className=" reset-btn blue-btn submit-btn" onClick={() => { saveProfile(name, surname, patronymic, phone, email, WhatsApp, tg, viber, zoom) }}>Создать профиль</button>
-
             </>
-
-
-
-
-
           }
-          {/* {(email && phone) &&
-            <>
 
-            </>
-          } */}
+          {(stage > 4) &&
+            <button className=" reset-btn blue-btn submit-btn" onClick={() => { saveProfile(name, surname, patronymic, phone, email, WhatsApp, tg, viber, zoom) }}>Создать профиль</button>
+          }
 
+          {(stage < 5) &&
+            <button className={(firstStage || secondStage || thirdStage || fourthStage) ? "reset-btn blue-btn submit-btn" : "reset-btn blue-btn submit-btn grey"} onClick={changeStage}>Далее</button>
+          }
 
         </div>
 
