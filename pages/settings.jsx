@@ -57,7 +57,7 @@ export default function Settings() {
   const videores = videos.map((obj, index) => {
     if (videos.length > 0)
       return (
-        <div className="video-input-box ">
+        <div className="video-input-box " key={index}>
           <div className={(obj.title.length > 0) ?
             "video-input-box__item float" :
             "video-input-box__item"}>
