@@ -57,7 +57,7 @@ export default function Settings() {
   const videores = videos.map((obj, index) => {
     if (videos.length > 0)
       return (
-        <div className="video-input-box " key={index}>
+        <div className="video-input-box "  >
           <div className={(obj.title.length > 0) ?
             "video-input-box__item float" :
             "video-input-box__item"}>
@@ -244,7 +244,7 @@ export default function Settings() {
                     }
                     <div className="custom-file-preview">
                       {photos.length > 0 && photos.map((item, index) => (
-                        <div className="prev-img" key={index} data-imgindex={index}>
+                        <div className="prev-img" data-imgindex={index}>
                           <span onClick={handleDeleteImg}></span>
                           <img src={item.src} alt={item.name} />
                         </div>
