@@ -1,8 +1,9 @@
-
+"use client"
+import { useState } from 'react';
 
 export default function Recommended() {
 
-
+  const [popup, openPopup] = useState(false);
   return (
     <>
       <div className="container">
@@ -27,7 +28,7 @@ export default function Recommended() {
                   <p>28 отзывов</p>
                 </div>
               </div>
-              <button className="offerings__item-open-contacts">
+              <button className="offerings__item-open-contacts" onClick={() => openPopup(true)}>
                 <span>Открыть контакты</span>
               </button>
             </div>
@@ -50,7 +51,7 @@ export default function Recommended() {
                   <p>28 отзывов</p>
                 </div>
               </div>
-              <button className="offerings__item-open-contacts">
+              <button className="offerings__item-open-contacts" onClick={() => openPopup(true)}>
                 <span>Открыть контакты</span>
               </button>
             </div>
@@ -99,7 +100,7 @@ export default function Recommended() {
                   <p>28 отзывов</p>
                 </div>
               </div>
-              <button className="offerings__item-open-contacts">
+              <button className="offerings__item-open-contacts" onClick={() => openPopup(true)}>
                 <span>Открыть контакты</span>
               </button>
             </div>
@@ -145,9 +146,33 @@ export default function Recommended() {
                   <p>28 отзывов</p>
                 </div>
               </div>
-              <button className="offerings__item-open-contacts">
+              <button className="offerings__item-open-contacts" onClick={() => openPopup(true)}>
                 <span>Открыть контакты</span>
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={popup ? "popup open" : "popup cloose"}>
+        <div className="popup__wrapper popup__wrapper-cont">
+          <div className="policy popup-top">
+            <div className=" popup__top">
+              <button className="popup__cloose" onClick={() => openPopup(false)}>
+                <img src="./img/cloose__popup.svg" alt="" />
+              </button>
+            </div>
+            <div className="popup__body">
+              <div className="popup__img">
+                <img src="./img/blue-tel.svg" alt="" />
+              </div>
+
+              <div className="popup__title">Открыть контакты</div>
+              <div className="popup__text">Открывая контакты, вы одновременно сможете видеть контактные данные друг друга</div>
+              <button className="open-contacts">Открыть контакты</button>
+              <div className="not-seen">
+                <input type="checkbox" name='not-seen' id='not-seen' />
+                <label htmlFor="not-seen">Больше не показывать это уведомление</label>
+              </div>
             </div>
           </div>
         </div>

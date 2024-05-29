@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import styles from "./index.module.scss"
 
-function Accordion(props) {
+function Accordion({ title, children }) {
   const [open, setOpen] = useState(false);
 
   let toggleHandler = (e) => {
@@ -10,9 +10,9 @@ function Accordion(props) {
   return (
     <div className={open ? styles.accordion__item__open : styles.accordion__item}>
       <div className={styles.accordion__header} onClick={toggleHandler}>
-        <h4>{props.title}</h4>
+        <h4>{title}</h4>
       </div>
-      <p className={styles.accordion__content}>{props.text}</p>
+      <p className={styles.accordion__content}>{children}</p>
     </div>
   );
 }

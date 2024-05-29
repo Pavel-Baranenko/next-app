@@ -1,3 +1,4 @@
+"use client"
 import GreyFooter from "@/components/modules/GreyFooter/GreyFooter";
 import Header from "@/components/modules/Header/Header";
 import Hero from "@/components/modules/Hero/Hero";

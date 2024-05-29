@@ -94,7 +94,11 @@ export default function Offer() {
             </div>
 
           </div>
+
         </div>
+        <button className="offer-edit">
+          <img src="./img/edit.svg" alt="" />
+          Редактировать заявку</button>
       </div>
     </>
   )

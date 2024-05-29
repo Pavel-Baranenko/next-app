@@ -15,12 +15,14 @@ import '@/app/globalStyles/normalize.css'
 import '@/app/globalStyles/globals.scss'
 
 import { useState } from 'react';
+import Object from '@/components/modules/Object/Object';
+import Leads from '@/components/modules/Leads/Leads';
 
 
 
 
 
-const UserOffer = () => {
+const UserFavourite = () => {
 
   const [activeIndex, setActiveIndex] = useState(1);
   const handleClick = (index) => setActiveIndex(index);
@@ -34,32 +36,25 @@ const UserOffer = () => {
         <div className="container">
           <div className="tabs white-box">
             <div className="tabs__title">
-              <button className="back-tab btn-reset">
-                <img src="./img/back.svg" alt="" />
-              </button>
-              Куплю квартиру в Москве</div>
+              Избранное
+            </div>
             <div className="tabs__buttons">
               <button className={`tabs__btn btn-reset  ${checkActive(1, "active")}`}
-                onClick={() => handleClick(1)}>Заявка</button>
+                onClick={() => handleClick(1)}>Объекты</button>
               <button className={`tabs__btn btn-reset  ${checkActive(2, "active")}`}
-                onClick={() => handleClick(2)}>Предложения <span className='blue'>5</span></button>
+                onClick={() => handleClick(2)}>Заявки </button>
               <button className={`tabs__btn btn-reset  ${checkActive(3, "active")}`}
-                onClick={() => handleClick(3)}>Исполнители <span>2</span></button>
-              <button className={`tabs__btn btn-reset  ${checkActive(4, "active")}`}
-                onClick={() => handleClick(4)}>Отказы <span>1</span></button>
-              <button className={`tabs__btn btn-reset  ${checkActive(5, "active")}`}
-                onClick={() => handleClick(5)}>Рекомендованные <span>193</span></button>
+                onClick={() => handleClick(3)}>Пользователи </button>
+
 
 
             </div>
           </div>
         </div>
         <div className="panels">
-          {checkActive(1, "active") && <Offer />}
-          {checkActive(2, "active") && <Offerings />}
+          {checkActive(1, "active") && <Object />}
+          {checkActive(2, "active") && <Leads />}
           {checkActive(3, "active") && <Performers />}
-          {checkActive(4, "active") && <Canceled />}
-          {checkActive(5, "active") && <Recommended />}
         </div>
 
 
@@ -71,4 +66,4 @@ const UserOffer = () => {
 }
 
 
-export default UserOffer;
+export default UserFavourite;

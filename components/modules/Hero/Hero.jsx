@@ -1,11 +1,12 @@
 "use client"
 import Link from "next/link";
 import 'swiper/css';
-import styles from "./index.module.scss"
 // import "swiper/css/autoplay"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css/autoplay';
+
+import styles from "./index.module.scss"
 
 
 export default function Hero() {
@@ -265,8 +266,7 @@ export default function Hero() {
             spaceBetween={20}
             slidesPerView={'auto'}
             modules={[Autoplay]}
-            // autoplay={{ delay: 0, reverseDirection: true, }}
-            autoplay={{ delay: 0 }}
+            autoplay={{ delay: 0, reverseDirection: false, }}
             speed={3000}
             loop={true}
           // reverseDirection={true}
