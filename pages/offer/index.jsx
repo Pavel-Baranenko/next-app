@@ -386,7 +386,7 @@ export default function Offer() {
                     <div className="form__radio-buttons">
                       {apartCoast.map((obj, index) => {
                         return (
-                          <div className="input__box"  >
+                          <div className="input__box" key={index} >
                             <input type="checkbox" name="radio-client" value={obj.value}
                               checked={subType == obj.value ? true : false}
                               onChange={(e) => { setSubType(e.target.value) }} />
@@ -404,7 +404,7 @@ export default function Offer() {
                     <div className="form__radio-buttons">
                       {landCoast.map((obj, index) => {
                         return (
-                          <div className="input__box"  >
+                          <div className="input__box" key={index}>
                             <input type="checkbox" name="radio-client" value={obj.value}
                               checked={subType == obj.value ? true : false}
                               onChange={(e) => { setSubType(e.target.value) }} />
@@ -418,7 +418,7 @@ export default function Offer() {
                     <div className="form__radio-buttons">
                       {comCoast.map((obj, index) => {
                         return (
-                          <div className="input__box"  >
+                          <div className="input__box" key={index} >
                             <input type="checkbox" name="radio-client" value={obj.value}
                               checked={subType == obj.value ? true : false}
                               onChange={(e) => { setSubType(e.target.value) }} />
@@ -504,7 +504,7 @@ export default function Offer() {
               <div className="form__radio-buttons">
                 {countRooms.map((obj, index) => {
                   return (
-                    <div className="input__box"  >
+                    <div className="input__box" key={index}>
                       <input type="checkbox" name="radio-client" value={obj.value}
                         checked={count == obj.value ? true : false}
                         // onChange={(e) => { setCount(e.target.value) }} />
@@ -523,7 +523,7 @@ export default function Offer() {
                     <div className="form__radio-buttons">
                       {rooms.map((item, index) => {
                         return (
-                          <div className="input__box"  >
+                          <div className="input__box" key={index}>
                             <input type="checkbox" name="radio-client" value={item}
                               checked={subRoom.bedroom == item ? true : false}
                               // onChange={(e) => { edit(bedroom, e) }} />
@@ -539,7 +539,7 @@ export default function Offer() {
                     <div className="form__radio-buttons">
                       {rooms.map((item, index) => {
                         return (
-                          <div className="input__box"  >
+                          <div className="input__box" key={index}>
                             <input type="checkbox" name="radio-client" value={item}
                               checked={subRoom.sanitary == item ? true : false}
                               onChange={e => setSubRoom({ ...subRoom, ...{ sanitary: e.target.value } })} />
@@ -554,7 +554,7 @@ export default function Offer() {
                     <div className="form__radio-buttons">
                       {rooms.map((item, index) => {
                         return (
-                          <div className="input__box"  >
+                          <div className="input__box" key={index}>
                             <input type="checkbox" name="radio-client" value={item}
                               checked={subRoom.balcony == item ? true : false}
                               onChange={e => setSubRoom({ ...subRoom, ...{ balcony: e.target.value } })} />
@@ -686,7 +686,7 @@ export default function Offer() {
               <div className="form__radio-buttons">
                 {goals.map((obj, index) => {
                   return (
-                    <div className="input__box"  >
+                    <div className="input__box" key={index}>
                       <input type="checkbox" name="radio-client" value={obj.value}
                         checked={goal == obj.value ? true : false}
                         onChange={() => { setGoal(obj.value) }} />
@@ -710,7 +710,7 @@ export default function Offer() {
               <div className="form__radio-buttons">
                 {purchaseMethod.map((obj, index) => {
                   return (
-                    <div className="input__box"  >
+                    <div className="input__box" key={index}>
                       <input type="checkbox" name="radio-client" value={obj.value}
                         checked={purchase == obj.value ? true : false}
                         onChange={() => { setPurchase(obj.value) }} />
