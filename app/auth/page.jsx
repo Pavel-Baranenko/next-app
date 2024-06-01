@@ -78,12 +78,12 @@ export default function Auth() {
   }
   const sendCodeUser = async (code) => {
     // console.log(code);
-    // const url = "https://umnoj.com:445/users/activate"
+    // const url = "https://umnoj.com:445/api/v1/users/activate"
     // console.log(url);
     // console.log(JSON.parse(localStorage.getItem('token')));
 
     try {
-      const response = await axios.get(`https://umnoj.com:445/users/activate?code=${code}`, {
+      const response = await axios.get(`https://umnoj.com:445/api/v1/users/activate?code=${code}`, {
         headers: {
           'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
         },

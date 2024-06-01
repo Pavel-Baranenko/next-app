@@ -116,6 +116,10 @@
     justify-content: center;
   }
 
+  a:hover {
+    background-color: #343f56;
+  }
+
   a.tg {
     width: 100%;
     gap: 12px;
@@ -127,7 +131,7 @@
   margin-top: 100px;
   font-size: 14px;
   color: #7786A5;
-  border-top: 1px solid #7786A5;
+  border-top: 1px solid #3A465D;
 
   &__inner {
     display: flex;
@@ -171,6 +175,10 @@
   .column {
     li {
       font-size: 14px;
+    }
+
+    &:nth-child(2) {
+      width: 167px;
     }
 
     &:nth-child(1) {

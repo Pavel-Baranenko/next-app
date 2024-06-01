@@ -27,7 +27,7 @@ export default function Hero() {
             slidesPerView={'auto'}
             modules={[Autoplay]}
             autoplay={{ delay: 0, reverseDirection: true, }}
-            speed={3000}
+            speed={20000}
             loop={true}
           >
             <SwiperSlide className={styles.slide}>
@@ -267,7 +267,7 @@ export default function Hero() {
             slidesPerView={'auto'}
             modules={[Autoplay]}
             autoplay={{ delay: 0, reverseDirection: false, }}
-            speed={3000}
+            speed={20000}
             loop={true}
           // reverseDirection={true}
           >

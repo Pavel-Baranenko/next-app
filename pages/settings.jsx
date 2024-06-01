@@ -164,7 +164,7 @@ export default function Settings() {
     try {
       const response = axios({
         method: "post",
-        url: 'https://umnoj.com:445/users/update',
+        url: 'https://umnoj.com:445/api/v1/users/update',
         data: formData,
         headers: {
           "Content-Type": "multipart/form-data",

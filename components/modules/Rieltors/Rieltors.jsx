@@ -15,7 +15,7 @@ export default function Rieltors() {
           <span className="section__subtitle">
             Рейтинг лучших риелторов платформы на май 2024 год
           </span>
-          <div className={`${styles.grid} ${more ? "open-grid" : "cloose"}`}>
+          <div className={`${styles.grid} ${more && styles.open__grid}`}>
             <div className={styles.item}>
               <img src="./img/rieltor1.png" alt="" className={styles.img} />
               <div className={styles.wrap}>

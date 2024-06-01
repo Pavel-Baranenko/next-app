@@ -20,6 +20,11 @@
   height: 90px;
   background-repeat: no-repeat;
   background-position: center;
+  transition: all 0.3s linear;
+}
+
+.video-react-big-play-button:hover::after {
+  background-image: url(../../../public/img/play-white.svg);
 }
 
 .video-react-big-play-button::before {

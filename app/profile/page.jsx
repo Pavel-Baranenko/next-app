@@ -16,7 +16,7 @@ export const getInfo = async () => {
   // try {
   //   const response = await axios({
   //     method: "get",
-  //     url: "https://umnoj.com:445/s/info",
+  //     url: "https://umnoj.com:445/api/v1/s/info",
   //     headers: {
   //       'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
   //     },

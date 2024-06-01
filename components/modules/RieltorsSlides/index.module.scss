@@ -101,8 +101,8 @@
   margin-bottom: 15px;
 
   img {
-    width: 15px;
-    height: 14.25px;
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -131,6 +131,7 @@
 // }\
 .wrapper {
   margin-bottom: 150px;
+  overflow: hidden;
 
   .swiper-slide-prev {
     opacity: 0;
@@ -170,5 +171,11 @@
 
   .wrapper {
     margin-bottom: 80px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .name {
+    white-space: nowrap;
   }
 }

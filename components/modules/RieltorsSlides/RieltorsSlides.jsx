@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Mousewheel, Parallax, EffectFade } from 'swiper/modules';
+import { Navigation, Parallax, EffectFade } from 'swiper/modules';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
 // import "swiper/swiper.min.css";
@@ -23,7 +23,7 @@ export default function RieltorsSlides() {
 
           <Swiper
             navigation={true}
-            modules={[Navigation, Mousewheel, Parallax, EffectFade]}
+            modules={[Navigation, Parallax, EffectFade]}
             className="rieltor-swiper"
             spaceBetween={20}
             slidesPerView={'auto'}

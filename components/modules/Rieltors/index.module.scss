@@ -19,6 +19,7 @@
   background-color: #fff;
   border-radius: 10px;
   padding: 10px;
+  border: 1px solid #f1f7ff;
 }
 
 .img {
@@ -163,4 +164,24 @@
     }
   }
 
+  .open__grid {
+
+    .item:nth-child(11),
+    .item:nth-child(12),
+    .item:nth-child(13),
+    .item:nth-child(14),
+    .item:nth-child(15),
+    .item:nth-child(16),
+    .item:nth-child(17),
+    .item:nth-child(18),
+    .item:nth-child(19),
+    .item:nth-child(20),
+    .item:nth-child(21) {
+      opacity: 1;
+      padding: 20px;
+      height: auto;
+      display: flex;
+    }
+
+  }
 }

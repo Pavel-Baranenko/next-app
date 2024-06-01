@@ -16,7 +16,8 @@ export const registration = async (name, email, pass, phone, role) => {
   try {
     const response = await axios({
       method: "post",
-      url: "https://umnoj.com:445/users/create",
+      url: "https://umnoj.com:445/api/v1/users/create",
+      // https://umnoj.com:445/api/v1/api/v1
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -40,7 +41,7 @@ export const sendCode = async () => {
   try {
     const response = await axios({
       method: "get",
-      url: "https://umnoj.com:445/users/sms",
+      url: "https://umnoj.com:445/api/v1/users/sms",
       headers: {
         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
@@ -56,12 +57,12 @@ export const sendCode = async () => {
 
 export const sendCodeUser = async (code) => {
   // console.log(code);
-  // const url = "https://umnoj.com:445/users/activate"
+  // const url = "https://umnoj.com:445/api/v1/users/activate"
   // console.log(url);
   // console.log(JSON.parse(localStorage.getItem('token')));
 
   try {
-    const response = await axios.get(`https://umnoj.com:445/users/activate?code=${code}`, {
+    const response = await axios.get(`https://umnoj.com:445/api/v1/users/activate?code=${code}`, {
       headers: {
         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },
@@ -87,7 +88,7 @@ export const loginUser = async (login, password) => {
   try {
     const response = await axios({
       method: "post",
-      url: "https://umnoj.com:445/users/login",
+      url: "https://umnoj.com:445/api/v1/users/login",
       data: bodyFormData
     })
     console.log("вход");
@@ -106,7 +107,7 @@ export const getInfo = async () => {
   try {
     const response = await axios({
       method: "get",
-      url: "https://umnoj.com:445/users/info",
+      url: "https://umnoj.com:445/api/v1/users/info",
       headers: {
         'Authorization': `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
       },

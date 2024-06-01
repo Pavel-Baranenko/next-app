@@ -17,7 +17,9 @@ export default function Home() {
     <>
       <Header />
       <main className="main__page">
-        <Hero />
+        <div className="hero-wrapper">
+          <Hero />
+        </div>
         <Video />
         <ParamsInfo />
         <Rieltors />
