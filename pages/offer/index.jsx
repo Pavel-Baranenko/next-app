@@ -100,39 +100,42 @@ export default function Offer() {
             <h4> <a href="javascript:history.back()" className="back-link mob"></a>Создание заявки для поиска недвижимости</h4>
             <span className="user-id">ID 16</span>
           </div>
-          <div className="offer-top form__inner">
-            <div className="offer-top__item">
-              <img src="./img/step-1.svg" alt="" />
-              <div className="offer-top-info">
-                <span className="offer-top__title">Создайте<br />анонимную заявку</span>
-                <p className="offer-top__text">
-                  Опишите недвижимость, которую вы ищите
-                </p>
+          <div className="offer-top__wrapper">
+            <div className="offer-top form__inner">
+              <div className="offer-top__item">
+                <img src="./img/step-1.svg" alt="" />
+                <div className="offer-top-info">
+                  <span className="offer-top__title">Создайте<br />анонимную заявку</span>
+                  <p className="offer-top__text">
+                    Опишите недвижимость, которую вы ищите
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="offer-top__item">
-              <img src="./img/step-2.svg" alt="" />
-              <div className="offer-top-info">
-                <span className="offer-top__title">
-                  Получайте<br />предложения
-                </span>
-                <p className="offer-top__text">
-                  Риелторы сделают вам свои предложения
-                </p>
+              <div className="offer-top__item">
+                <img src="./img/step-2.svg" alt="" />
+                <div className="offer-top-info">
+                  <span className="offer-top__title">
+                    Получайте<br />предложения
+                  </span>
+                  <p className="offer-top__text">
+                    Риелторы сделают вам свои предложения
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="offer-top__item">
-              <img src="./img/step-3.svg" alt="" />
-              <div className="offer-top-info">
-                <span className="offer-top__title">
-                  Обменивайтесь контактами
-                </span>
-                <p className="offer-top__text">
-                  Откройте контакты подходящим риелторам
-                </p>
+              <div className="offer-top__item">
+                <img src="./img/step-3.svg" alt="" />
+                <div className="offer-top-info">
+                  <span className="offer-top__title">
+                    Обменивайтесь контактами
+                  </span>
+                  <p className="offer-top__text">
+                    Откройте контакты подходящим риелторам
+                  </p>
+                </div>
               </div>
             </div>
           </div>
+
           <div className="form__inner ">
             <div className="form__heading">
               Расположение  <span className='red'>*</span>
