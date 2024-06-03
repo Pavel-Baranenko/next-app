@@ -21,7 +21,7 @@ export const registration = async (name, email, pass, phone, role) => {
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
     })
-
+    console.log(response);
     localStorage.setItem("token", JSON.stringify(response.data.data.token))
     // localStorage.setItem("Jwt", JSON.stringify(response.data.token))
     // localStorage.setItem("Jwt", JSON.stringify(response.data.token))

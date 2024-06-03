@@ -27,13 +27,15 @@ export default function Leads() {
               <span>Санкт-Петербург / Все районы</span>
             </div>
             <div className="lead-grid">
-              <div className="lead-grid__item">Покупка</div>
-              <div className="lead-grid__item">Квартира</div>
-              <div className="lead-grid__item">Новая / 2024 г.</div>
-              <div className="lead-grid__item">Всего комнат 1– 5</div>
-              <div className="lead-grid__item">Площадь <strong>70 – 150 м2</strong></div>
-              <div className="lead-grid__item">Покупка</div>
-              <div className="lead-grid__item">Покупка</div>
+
+              <div className="lead-grid__item lead-grid__item-home">Квартира</div>
+              <div className="lead-grid__item lead-grid__item-coast"> Новая</div>
+              <div className="lead-grid__item lead-grid__item-count">1– 5</div>
+              <div className="lead-grid__item lead-grid__item-square">150 м2</div>
+              <div className="lead-grid__item lead-grid__item-goal">Для проживания</div>
+              <div className="lead-grid__item lead-grid__item-date">1 – 3 месяца</div>
+
+
             </div>
             <div className="lead-bottom">
               <div className="lead-price">
@@ -46,7 +48,7 @@ export default function Leads() {
                 </svg>
 
               </div>
-              <div className="lead-offers">Предложений <span>3</span></div>
+              <div className="lead-offers">Предложений <span className="blue-colored">1</span></div>
             </div>
           </div>
           <div className="leads__item">
@@ -69,13 +71,15 @@ export default function Leads() {
               <span>Санкт-Петербург / Все районы</span>
             </div>
             <div className="lead-grid">
-              <div className="lead-grid__item">Покупка</div>
-              <div className="lead-grid__item">Квартира</div>
-              <div className="lead-grid__item">Новая / 2024 г.</div>
-              <div className="lead-grid__item">Всего комнат 1– 5</div>
-              <div className="lead-grid__item">Площадь <strong>70 – 150 м2</strong></div>
-              <div className="lead-grid__item">Покупка</div>
-              <div className="lead-grid__item">Покупка</div>
+
+              <div className="lead-grid__item lead-grid__item-home">Квартира</div>
+              <div className="lead-grid__item lead-grid__item-coast"> Новая</div>
+              <div className="lead-grid__item lead-grid__item-count">1– 5</div>
+              <div className="lead-grid__item lead-grid__item-square">150 м2</div>
+              <div className="lead-grid__item lead-grid__item-goal">Для проживания</div>
+              <div className="lead-grid__item lead-grid__item-date">1 – 3 месяца</div>
+
+
             </div>
             <div className="lead-bottom">
               <div className="lead-price">
@@ -90,6 +94,7 @@ export default function Leads() {
               </div>
             </div>
           </div>
+
           <div className="leads__item">
             <div className="lead-top">
               <h4 className="lead-title">Куплю квартиру в Санкт-Петербурге</h4>
@@ -110,13 +115,15 @@ export default function Leads() {
               <span>Санкт-Петербург / Все районы</span>
             </div>
             <div className="lead-grid">
-              <div className="lead-grid__item">Покупка</div>
-              <div className="lead-grid__item">Квартира</div>
-              <div className="lead-grid__item">Новая / 2024 г.</div>
-              <div className="lead-grid__item">Всего комнат 1– 5</div>
-              <div className="lead-grid__item">Площадь <strong>70 – 150 м2</strong></div>
-              <div className="lead-grid__item">Покупка</div>
-              <div className="lead-grid__item">Покупка</div>
+
+              <div className="lead-grid__item lead-grid__item-home">Квартира</div>
+              <div className="lead-grid__item lead-grid__item-coast"> Новая</div>
+              <div className="lead-grid__item lead-grid__item-count">1– 5</div>
+              <div className="lead-grid__item lead-grid__item-square">150 м2</div>
+              <div className="lead-grid__item lead-grid__item-goal">Для проживания</div>
+              <div className="lead-grid__item lead-grid__item-date">1 – 3 месяца</div>
+
+
             </div>
             <div className="lead-bottom">
               <div className="lead-price">
