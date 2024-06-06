@@ -2507,6 +2507,7 @@ textarea {
   font-weight: 500;
   padding-bottom: 20px;
   margin-bottom: 15px;
+  color: #2a344a;
 }
 
 .balance-heding::after {
@@ -2517,7 +2518,7 @@ textarea {
   left: -30px;
   width: calc(100% + 60px);
   background-color: #E1EDFD;
-  height: 2px;
+  height: 1px;
 }
 
 //////////////////////////////////////////////////////////////////////////Main
@@ -4880,4 +4881,93 @@ textarea {
     padding: 10px 20px;
   }
 
+}
+
+.balance-info__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #2a344a;
+  padding: 20px 0;
+  position: relative;
+
+}
+
+.balance-info__item+.balance-info__item {
+  border-top: 1px solid #E1EDFD;
+}
+
+.balance-info__add {
+  p {
+    color: #0ab258;
+  }
+}
+
+.balance-info__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 167%;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7786a5;
+  margin-bottom: 15px;
+}
+
+.balance-info__line {
+  padding: 5px 30px;
+  background: #f1f7ff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #3b4a69;
+}
+
+.balance-info__line {
+  width: calc(100% + 60px);
+  margin-left: -30px;
+}
+
+
+@media (max-width: 1080px) {
+  .balance__heading {
+    font-size: 20px;
+  }
+
+  .balance__top-rifht,
+  .balance__top {
+    flex-wrap: wrap;
+  }
+
+  .balance__input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .balance-wrap {
+    .white-wrap {
+      padding: 15px 20px;
+    }
+  }
+
+  .balance__input-wrap {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .balance__btn {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .balance__input {
+    padding: 15px;
+  }
 }

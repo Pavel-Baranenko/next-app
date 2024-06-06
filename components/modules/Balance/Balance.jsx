@@ -27,40 +27,31 @@ const Balance = () => {
       </div>
       <div className="white-wrap">
         <div className="balance-heding">История операций</div>
-        <table className="balance__table">
-          <thead className="balance__table-top">
-            <tr>
-              <td>Тип операции</td>
-              <td>Событие</td>
-              <td>сумма, ₽</td>
-              <td>Баланс, ₽</td>
-              <td>Дата</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className='replenishment'>
-              <td>Пополнение</td>
-              <td>Баланс профиля</td>
-              <td>+400.00</td>
-              <td>1,000.00</td>
-              <td>27.12.22</td>
-            </tr>
-            <tr className='profit'>
-              <td>Доход</td>
-              <td>Реферальная программа</td>
-              <td>+400.00</td>
-              <td>1,000.00</td>
-              <td>27.12.22</td>
-            </tr>
-            <tr className='debit'>
-              <td>Списание</td>
-              <td>Продление тарифа PRO</td>
-              <td>— 200.35</td>
-              <td>1,000.00</td>
-              <td>27.12.22</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="balance-info">
+          <div className="balance-info__head">
+            <div className="balance-info__value">Событие</div>
+            <div className="balance-info__value">сумма, ₽</div>
+          </div>
+          <div className="balance-info__line">4 мая, понедельник</div>
+          <div className="balance-info__add balance-info__item">
+            <span>Баланс профиля</span>
+            <p>+400 ₽</p>
+          </div>
+          <div className="balance-info__minus balance-info__item">
+            <span>Покупка заявки</span>
+            <p>− 1 500 ₽</p>
+          </div>
+          <div className="balance-info__line">2 мая, суббота</div>
+
+          <div className="balance-info__minus balance-info__item">
+            <span>Продление тарифа PRO</span>
+            <p>− 200.35 ₽</p>
+          </div>
+          <div className="balance-info__add balance-info__item">
+            <span>Баланс профиля</span>
+            <p>+400 ₽</p>
+          </div>
+        </div>
       </div>
     </div>
   )
