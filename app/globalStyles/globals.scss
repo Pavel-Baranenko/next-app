@@ -4951,8 +4951,15 @@ textarea {
 
 @media (max-width: 768px) {
   .balance-wrap {
+    margin-top: 0;
+
     .white-wrap {
       padding: 15px 20px;
+      overflow: hidden;
+    }
+
+    .tabs__title {
+      padding-top: 76px;
     }
   }
 
