@@ -90,10 +90,50 @@ export default function Offer() {
     'balcony': ""
   })
 
+  const moskowList = ["Арбат", "Басманный", "Замоскворечье", "Красносельский", "Мещанский", "Пресненский", "Таганский",
+    "Тверской",
+    "Хамовники",
+    "Якиманка",
+    "Аэропорт",
+    "Беговой",
+    "Бескудниковский",
+    "Войковский",
+    "Восточное Дегунино",
+    "Головинский",
+    "Дмитровский",
+    "Западное Дегунино",
+    "Коптево",
+    "Левобережный",
+    "Молжаниновский",
+    "Савеловский",
+    "Сокол",
+    "Тимирязевский",
+    "Ховрино",
+    "Хорошевский"]
 
+  const SpbList = [
+    "Адмиралтейский",
+    "Василеостровский",
+    "Выборгский",
+    "Калининский",
+    "Кировский",
+    "Колпинский",
+    "Красногвардейский",
+    'Красносельский',
+    'Кронштадтский',
+    'Курортный',
+    'Московский',
+    'Невский',
+    'Петроградский',
+    'Петродворцовый',
+    'Приморский',
+    'Пушкинский',
+    'Фрунзенский',
+    'Центральный'
+  ]
   return (
     <main>
-      <div className="container">
+      <div className="container offer-page">
         <div className="form settings" >
           <div className="settings-top">
             <a href="javascript:history.back()" className="back-link mob-none"></a>
@@ -143,7 +183,7 @@ export default function Offer() {
             <div className="form__line">
               Укажите город, в котором вы ищите недвижимость. По желанию можете указать один или несколько районов
             </div>
-            <div className="form__body form__body-box">
+            <div className="form__body form__body-box search-reg">
               <div className="form__radio-buttons">
                 <div className="input__box">
                   <input type="checkbox" name="radio-client" value="Moscow"
@@ -162,6 +202,31 @@ export default function Offer() {
                 </div>
 
               </div>
+              {city.length > 0 &&
+                <div className="search-reg-box">
+                  <div className="search-reg-title">Район</div>
+                  <div className={`milti-select-inner search-inner-point ${selectedCity.length == 0 ? "" : "milti-select-inner-float"}`}>
+                    {/* <p className="multi-select-heading">Укажите интересующие вас районы </p> */}
+                    <div className="search-icon">
+                      <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 2C4.3505 2 2 4.3505 2 7.25C2 10.1495 4.3505 12.5 7.25 12.5C10.1495 12.5 12.5 10.1495 12.5 7.25C12.5 4.3505 10.1495 2 7.25 2ZM0.5 7.25C0.5 3.52208 3.52208 0.5 7.25 0.5C10.9779 0.5 14 3.52208 14 7.25C14 8.93142 13.3852 10.4693 12.3682 11.651L15.6553 14.9382C15.9482 15.2311 15.9482 15.7059 15.6553 15.9988C15.3624 16.2917 14.8876 16.2917 14.5947 15.9988L11.2693 12.6734C10.1465 13.5069 8.75581 14 7.25 14C3.52208 14 0.5 10.9779 0.5 7.25Z" fill="#7786A5" />
+                      </svg>
+                    </div>
+
+                    <Multiselect
+                      placeholder='Укажите интересующие вас районы'
+                      isObject={false}
+                      selectedValues={selectedCity}
+                      // options={moskowList}
+                      options={city == "Moscow" ? moskowList : SpbList}
+                      // showCheckbox={true}
+                      onSelect={(event) => { setSelectedCity(event) }}
+                      onRemove={(event) => { setSelectedCity(event) }}
+                    />
+                  </div>
+                </div>
+              }
+
             </div>
 
           </div>
@@ -581,7 +646,7 @@ export default function Offer() {
           </div>
           <div className="form__inner ">
             <div className="form__heading bordered">
-              площадь  <span className='red'>*</span>
+              Площадь  <span className='red'>*</span>
             </div>
 
             <div className="form__body">
