@@ -188,7 +188,10 @@ export default function Offer() {
                 <div className="input__box">
                   <input type="checkbox" name="radio-client" value="Moscow"
                     checked={city == 'Moscow' ? true : false}
-                    onChange={(e) => { setCity(e.target.value) }} />
+                    onChange={(e) => {
+                      setCity(e.target.value)
+                      setSelectedCity([])
+                    }} />
                   <label htmlFor='radio-client'>Москва</label>
 
                 </div>
@@ -196,7 +199,10 @@ export default function Offer() {
                 <div className="input__box">
                   <input type="checkbox" name="radio-realtor" value="Saint-Petersburg"
                     checked={city == 'Saint-Petersburg' ? true : false}
-                    onChange={(e) => { setCity(e.target.value) }} />
+                    onChange={(e) => {
+                      setCity(e.target.value)
+                      setSelectedCity([])
+                    }} />
                   <label htmlFor='radio-realtor'>Санкт-Петербург</label>
 
                 </div>
