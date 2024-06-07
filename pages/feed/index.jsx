@@ -1,6 +1,5 @@
 "use client"
 
-
 import { Footer } from '@/components/modules/Footer/Footer';
 import Header from '@/components/modules/Header/Header'
 import Leads from '@/components/modules/Leads/Leads';
@@ -9,6 +8,7 @@ import Leads from '@/components/modules/Leads/Leads';
 import axios from "axios";
 import Link from 'next/link';
 import { useState } from 'react';
+import Select from 'react-select'
 
 import '@/app/globalStyles/normalize.css'
 import '@/app/globalStyles/globals.scss'
@@ -21,14 +21,14 @@ const Feed = () => {
   const [activeIndex, setActiveIndex] = useState(1);
   const handleClick = (index) => setActiveIndex(index);
   const checkActive = (index, className) => activeIndex === index ? className : "";
-
+  const [filter, setFilter] = useState(false);
   return (
     <div className='page__wrapper'>
       <Header />
       <div className={styles.feed}>
         <div className={styles.top}>
           <div className={styles.left}>
-            <div className={`In__development ${styles.dropdown}`}>
+            <div className={`right In__development  ${styles.dropdown}`}>
               Покупатели
               <svg width="12" height="6" viewBox="0 0 12 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.96967 0.21967C1.26256 -0.0732233 1.73744 -0.0732233 2.03033 0.21967L6 4.18934L9.96967 0.21967C10.2626 -0.0732233 10.7374 -0.0732233 11.0303 0.21967C11.3232 0.512563 11.3232 0.987437 11.0303 1.28033L6.88388 5.42678C6.39573 5.91493 5.60427 5.91493 5.11612 5.42678L0.96967 1.28033C0.676777 0.987437 0.676777 0.512563 0.96967 0.21967Z" fill="#7786A5" />
@@ -47,7 +47,7 @@ const Feed = () => {
 
             </button>
           </div>
-          <div className={styles.center}>
+          <div className={styles.center} onClick={() => { setFilter(true) }}>
             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M7.25 2C4.3505 2 2 4.3505 2 7.25C2 10.1495 4.3505 12.5 7.25 12.5C10.1495 12.5 12.5 10.1495 12.5 7.25C12.5 4.3505 10.1495 2 7.25 2ZM0.5 7.25C0.5 3.52208 3.52208 0.5 7.25 0.5C10.9779 0.5 14 3.52208 14 7.25C14 8.93142 13.3852 10.4693 12.3682 11.651L15.6553 14.9382C15.9482 15.2311 15.9482 15.7059 15.6553 15.9988C15.3624 16.2917 14.8876 16.2917 14.5947 15.9988L11.2693 12.6734C10.1465 13.5069 8.75581 14 7.25 14C3.52208 14 0.5 10.9779 0.5 7.25Z" fill="#7786A5" />
             </svg>
@@ -391,7 +391,162 @@ const Feed = () => {
             </div>
           </div>
         </div>
+        <div className={filter ? styles.filter : styles.filter__dis}>
+          <div className={styles.filter__body}>
+            <div className={styles.filter__top}>
+              <span>фильтр включен</span>
+              <button className={styles.filter__reset}>сбросить</button>
+              <button
+                className={styles.filter__cloose}
+                onClick={() => { setFilter(false) }}
+              ><img src="./img/filter-close.svg" alt="" /></button>
+            </div>
+            <div className={styles.filter__item}>
+              <span className={styles.item__title}>Расположение недвижимости</span>
+              <Select className="filter-select" options={[
+                { value: 'msk', label: 'Москва' },
+                { value: 'spb', label: 'Санкт-Петербург' },
+              ]} placeholder="Город" />
+              <Select className="filter-select" options={[
+                { value: 'msk1', label: 'район1' },
+                { value: 'msk2', label: 'район2' },
+                { value: 'msk3', label: 'район3' },
+                { value: 'msk4', label: 'район4' },
+                { value: 'msk5', label: 'район5' },
+                { value: 'msk6', label: 'район6' },
+                { value: 'msk7', label: 'район7' },
+                { value: 'msk8', label: 'район8' },
 
+              ]} placeholder="Район" />
+            </div>
+            <div className={styles.filter__item}>
+              <span className={styles.item__title__price}>
+                Цена в
+                <span className='blue__text'> рублях</span>
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.46967 0.860295C0.762563 0.567402 1.23744 0.567402 1.53033 0.860295L5 4.32997L8.46967 0.860295C8.76256 0.567402 9.23744 0.567402 9.53033 0.860295C9.82322 1.15319 9.82322 1.62806 9.53033 1.92096L5.88388 5.5674C5.39573 6.05556 4.60427 6.05556 4.11612 5.5674L0.46967 1.92096C0.176777 1.62806 0.176777 1.15319 0.46967 0.860295Z" fill="#7786A5" />
+                </svg>
+
+              </span>
+              <div className={styles.filter__input}>
+                <input type="number" placeholder='От' />
+              </div>
+              <div className={styles.filter__input}>
+                <input type="number" placeholder='До' />
+              </div>
+            </div>
+            <div className={styles.filter__item}>
+              <span className={styles.item__title}>Тип недвижимости</span>
+              <div className={styles.mt5}>Квартира</div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-1" />
+                <label htmlFor="checkbox-1">Квартира</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-2" />
+                <label htmlFor="checkbox-2">Апартаменты</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-3" />
+                <label htmlFor="checkbox-3">Пентхаус</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-4" />
+                <label htmlFor="checkbox-4">Лофт</label>
+              </div>
+              <div className={styles.line}></div>
+              <div className={styles.sub__title}>Дом</div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-5" />
+                <label htmlFor="checkbox-5">Вилла</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-6" />
+                <label htmlFor="checkbox-6">Коттедж</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-7" />
+                <label htmlFor="checkbox-7">Частный дом</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-8" />
+                <label htmlFor="checkbox-8">Дуплекс</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-9" />
+                <label htmlFor="checkbox-9">Таунхаус</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-10" />
+                <label htmlFor="checkbox-10">Усадьба</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-11" />
+                <label htmlFor="checkbox-11">Особняк</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-12" />
+                <label htmlFor="checkbox-12">Поместье</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-13" />
+                <label htmlFor="checkbox-13">Мезонет</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-14" />
+                <label htmlFor="checkbox-14">Замок</label>
+              </div>
+              <div className={styles.line}></div>
+              <div className={styles.sub__title}>Земля</div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-15" />
+                <label htmlFor="checkbox-15">Участок земли</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-16" />
+                <label htmlFor="checkbox-16">Остров</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-17" />
+                <label htmlFor="checkbox-17">Виноградник</label>
+              </div>
+              <div className={styles.line}></div>
+              <div className={styles.sub__title}>Коммерческая</div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-18" />
+                <label htmlFor="checkbox-18">Отель</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-19" />
+                <label htmlFor="checkbox-19">Офис</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-20" />
+                <label htmlFor="checkbox-20">Офис</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-21" />
+                <label htmlFor="checkbox-21">Торговля</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-22" />
+                <label htmlFor="checkbox-22">Склад</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-23" />
+                <label htmlFor="checkbox-23">Общепит</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-24" />
+                <label htmlFor="checkbox-24">Производство</label>
+              </div>
+              <div className={styles.filter__check}>
+                <input type="checkbox" id="checkbox-25" />
+                <label htmlFor="checkbox-25">Свободное назначение</label>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       {/* <Footer /> */}
     </div>
