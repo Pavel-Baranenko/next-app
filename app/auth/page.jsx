@@ -236,7 +236,7 @@ export default function Auth() {
           <div className="verify__body">
             <ReactInputVerificationCode placeholder="" onChange={setCode} value={code} />
             <div className="verify__timer">Отправить код ещё раз через (<span>{minutes < 10 ? `0${minutes}` : minutes}:
-              {seconds < 10 ? `0${seconds}` : seconds} {minutes === 0 && seconds == 0 ? "<span>отправить</span>" : ""}</span>)</div>
+              {seconds < 10 ? `0${seconds}` : seconds} {minutes === 0 && seconds == 0 ? <span>отправить</span> : ""}</span>)</div>
           </div>
 
 
