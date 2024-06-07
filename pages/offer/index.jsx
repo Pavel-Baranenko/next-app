@@ -735,7 +735,7 @@ export default function Offer() {
                   <input type="number" className="square-input" />
 
                 </div>
-                <Select options={[
+                <Select className='value-input' options={[
                   { value: 'pub', label: 'Рублей — ₽' },
                   { value: 'usd', label: 'Долларов — $' },
                   { value: 'eur', label: 'Евро — €' },

@@ -5145,3 +5145,11 @@ textarea {
   color: #2a344a;
   margin-bottom: 15px;
 }
+
+.value-input {
+  width: 200px;
+
+  input {
+    width: 200px;
+  }
+}
